@@ -1,0 +1,20 @@
+#Ignore cursor AI rules
+.cursor\rules\codacy.mdc
+
+# dependencies
+node_modules
+.pnp
+.pnp.js
+
+# next
+.next
+out
+next-env.d.ts
+
+# debug / env
+npm-debug.log*
+.DS_Store
+.env*.local
+
+# typescript
+*.tsbuildinfo

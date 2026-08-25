@@ -1,0 +1,14 @@
+{
+  "illustrative": true,
+  "note": "Brojke su ilustrativne dok se ne otvori opt-in registracija. Mapa pokazuje kako će izgledati kad mještani dobrovoljno označe gdje žive.",
+  "total": 312,
+  "countriesCount": 11,
+  "home": { "lat": 44.9555, "lng": 15.8935, "name": "Čizmići (matično)" },
+  "countries": [
+    { "flag": "🇩🇪", "name": "Njemačka", "count": 98, "lat": 51.1657, "lng": 10.4515 },
+    { "flag": "🇦🇹", "name": "Austrija", "count": 64, "lat": 47.5162, "lng": 14.5501 },
+    { "flag": "🇸🇮", "name": "Slovenija", "count": 41, "lat": 46.1512, "lng": 14.9955 },
+    { "flag": "🇨🇭", "name": "Švicarska", "count": 27, "lat": 46.8182, "lng": 8.2275 },
+    { "flag": "🇸🇪", "name": "Švedska", "count": 15, "lat": 60.1282, "lng": 18.6435 }
+  ]
+}

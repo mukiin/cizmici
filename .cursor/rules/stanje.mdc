@@ -1,0 +1,16 @@
+---
+description: Čita i dopisuje STANJE.md na svakom razgovoru — dnevnik projekta za nastavak na drugom računaru.
+alwaysApply: true
+---
+
+# Dnevnik STANJE.md
+
+Na **početku** svakog razgovora pročitaj `STANJE.md` prije drugog rada.
+
+Na **kraju** svakog poteza koji mijenja kod, sadržaj, rute, odluke ili plan — ažuriraj `STANJE.md` po skillu `azuriraj-stanje`. Ne čekaj da korisnik to kaže.
+
+Ako je potez samo pitanje bez nove odluke i bez izmjene fajlova, ne diraj `STANJE.md`.
+
+Ne briši odluke. Dopisuj changelog (najnovije gore). Drži fajl kratkim: skini stare changelog stavke preko 20.
+
+`STANJE.md` ide u git. To je način da isti kontekst postoji na drugom računaru.

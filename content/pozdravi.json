@@ -1,0 +1,11 @@
+{
+  "illustrative": true,
+  "note": "Imena i poruke su ilustrativni primjeri izgleda zida. Pravi pozdravi dolaze kad se otvori slanje.",
+  "items": [
+    { "name": "Emina H.", "loc": "🇩🇪 München", "text": "Bajram šerif mubarek svim komšijama! Nedostaje mi zrak Čizmića." },
+    { "name": "Nedžad M.", "loc": "🇦🇹 Graz", "text": "Sretan Dan MZ! Ove godine dolazimo cijela porodica na igralište." },
+    { "name": "Amina Č.", "loc": "🇸🇮 Ljubljana", "text": "Divno je vidjeti da postoji ovakva stranica — hvala svima koji je grade." },
+    { "name": "Sead K.", "loc": "🇨🇭 Zürich", "text": "Pozdrav Društvenom domu, radujemo se povratku na ljeto." },
+    { "name": "Fatima B.", "loc": "🇸🇪 Malmö", "text": "Djeca me stalno pitaju o Čizmićima — sad im mogu pokazati mapu i slike." }
+  ]
+}

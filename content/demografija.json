@@ -1,0 +1,27 @@
+{
+  "note": "Podaci za naseljeno mjesto Čizmići. MZ administrativno obuhvata i Gradinu i Hadžaliće, koje treba obračunati posebno.",
+  "coverageNote": "Broj 851 odnosi se samo na naseljeno mjesto Čizmići (Popis 2013). Za potpunu sliku MZ nedostaje noviji popis koji bi zasebno pokrio Gradinu i Hadžaliće — ovo je otvoreno pitanje za buduće ažuriranje platforme uz pomoć same MZ.",
+  "source": "verified",
+  "sourceLabel": "Popis BiH 2013 / Wikipedia",
+  "males": 432,
+  "females": 419,
+  "areaKm2": 2.9,
+  "ageGroups": [
+    { "label": "0–4", "value": 59 },
+    { "label": "5–9", "value": 51 },
+    { "label": "10–14", "value": 58 },
+    { "label": "15–19", "value": 77 },
+    { "label": "20–24", "value": 67 },
+    { "label": "25–29", "value": 63 },
+    { "label": "30–34", "value": 59 },
+    { "label": "35–39", "value": 69 },
+    { "label": "40–44", "value": 80 },
+    { "label": "45–49", "value": 76 }
+  ],
+  "ethnicity": [
+    { "label": "Bošnjaci", "count": 842, "pct": "98,9%" },
+    { "label": "Hrvati", "count": 1, "pct": "0,1%" },
+    { "label": "Ostali / neizjašnjeni", "count": 8, "pct": "0,9%" }
+  ],
+  "total": 851
+}

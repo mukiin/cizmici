@@ -1,0 +1,39 @@
+{
+  "intro": "Okvirne lokacije centralnih objekata. Tačne granice zaseoka i geometrija puteva bit će dodane uz saradnju sa MZ.",
+  "center": [44.9555, 15.8935],
+  "zoom": 14,
+  "markers": [
+    {
+      "lat": 44.9555,
+      "lng": 15.8935,
+      "color": "#a6502e",
+      "title": "Čizmići",
+      "body": "centar naselja",
+      "legend": "Centar Čizmića"
+    },
+    {
+      "lat": 44.9561,
+      "lng": 15.8942,
+      "color": "#2f4a3c",
+      "title": "Džamija Čizmići",
+      "body": "približno",
+      "legend": "Džamija"
+    },
+    {
+      "lat": 44.9549,
+      "lng": 15.8928,
+      "color": "#3a6ea5",
+      "title": "Društveni dom",
+      "body": "približno",
+      "legend": "Društveni dom"
+    },
+    {
+      "lat": 44.9558,
+      "lng": 15.8951,
+      "color": "#c9a24b",
+      "title": "Sportsko igralište",
+      "body": "36×18 m, približno",
+      "legend": "Sportsko igralište"
+    }
+  ]
+}

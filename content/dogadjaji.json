@@ -1,0 +1,23 @@
+[
+  {
+    "day": "10",
+    "month": "Jul",
+    "title": "Dan MZ Čizmići",
+    "meta": "Centar Čizmića · cjelodnevni program",
+    "recurring": true
+  },
+  {
+    "day": "22",
+    "month": "Avg",
+    "title": "Turnir u malom nogometu",
+    "meta": "Sportsko igralište · 17:00",
+    "illustrative": true
+  },
+  {
+    "day": "05",
+    "month": "Sep",
+    "title": "Akcija čišćenja",
+    "meta": "Okuplja se kod Društvenog doma · 09:00",
+    "illustrative": true
+  }
+]

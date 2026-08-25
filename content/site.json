@@ -1,0 +1,58 @@
+{
+  "name": "Čizmići",
+  "domain": "cizmici.ba",
+  "tagline": "Lična karta mjesne zajednice — stanovništvo, infrastruktura, projekti i ljudi Čizmića, Gradine i Hadžalića, na jednom mjestu.",
+  "location": {
+    "municipality": "Grad Cazin",
+    "canton": "Unsko-sanski kanton",
+    "settlements": ["Čizmići", "Gradina", "Hadžalići"],
+    "lat": 44.9555,
+    "lng": 15.8935,
+    "elevationM": 318,
+    "note": "~4 km jugozapadno od Cazina"
+  },
+  "danMz": { "month": 7, "day": 10, "foundedYear": 2011 },
+  "stats": [
+    { "value": "851", "label": "stanovnika · popis 2013." },
+    { "value": "163", "label": "stambene jedinice · 2023." },
+    { "value": "33,9", "label": "prosječna starost" },
+    { "value": "10. jul", "label": "Dan MZ · osn. 2011." }
+  ],
+  "live": {
+    "lastNews": "Nova firma sa vlasničkom vezom prema Austriji",
+    "lastNewsHref": "/#historija"
+  },
+  "sources": [
+    "Akti Grada Cazina",
+    "Popis stanovništva BiH 2013.",
+    "Wikipedia — Čizmići",
+    "Javni poslovni registar"
+  ],
+  "disclaimer": "Neslužbena digitalna lična karta mjesne zajednice Čizmići, Grad Cazin. Podaci prikupljeni iz javno dostupnih zvaničnih akata Grada Cazina, popisa stanovništva 2013. i javnih poslovnih registara.",
+  "roadmap": [
+    {
+      "num": "01",
+      "title": "Lična karta Čizmića",
+      "body": "Historija, demografija, infrastruktura, mapa, projekti i biznisi — bez registracije, javno dostupno svima.",
+      "live": true
+    },
+    {
+      "num": "02",
+      "title": "Vijesti, priče i uživo",
+      "body": "Priče mještana, uživo traka na naslovnoj i događaji zajednice.",
+      "live": false
+    },
+    {
+      "num": "03",
+      "title": "Dijaspora",
+      "body": "Pozdravi, mapa (opt-in) i veza s ljudima koji žive van BiH.",
+      "live": false
+    },
+    {
+      "num": "04",
+      "title": "Zajednica",
+      "body": "Prijave komunalnih problema, ankete i saradnja sa Savjetom MZ — ako se faze 1–3 stvarno koriste.",
+      "live": false
+    }
+  ]
+}

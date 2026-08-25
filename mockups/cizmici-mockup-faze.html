@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="bs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Čizmići — Mockup faza 2, 3, 4</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+:root{
+  --ink:#211d16;
+  --parchment:#f4efe1;
+  --parchment-2:#ebe3cd;
+  --forest:#2f4a3c;
+  --forest-dark:#1e332a;
+  --rust:#a6502e;
+  --gold:#c9a24b;
+  --line:rgba(33,29,22,0.14);
+  --white:#fffdf8;
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+body{background:var(--parchment); color:var(--ink); font-family:'Inter',sans-serif; line-height:1.5;}
+h1,h2,h3{font-family:'Fraunces',serif; font-weight:600; letter-spacing:-0.01em;}
+.mono{font-family:'IBM Plex Mono',monospace;}
+.wrap{max-width:1120px; margin:0 auto; padding:0 28px;}
+
+/* top bar */
+.topbar{position:sticky; top:0; z-index:50; background:var(--forest-dark); color:var(--parchment); border-bottom:1px solid rgba(244,239,225,0.12);}
+.topbar .wrap{display:flex; align-items:center; justify-content:space-between; height:60px;}
+.brand{font-family:'Fraunces',serif; font-weight:700; display:flex; align-items:center; gap:8px;}
+.brand .dot{width:8px;height:8px;border-radius:50%;background:var(--rust);}
+.protobadge{font-family:'IBM Plex Mono',monospace; font-size:0.68rem; text-transform:uppercase; letter-spacing:0.05em; background:var(--rust); color:var(--white); padding:4px 10px; border-radius:100px;}
+
+/* phase tabs */
+.tabs{position:sticky; top:60px; z-index:49; background:rgba(244,239,225,0.95); backdrop-filter:blur(6px); border-bottom:1px solid var(--line);}
+.tabs .wrap{display:flex; gap:4px; overflow-x:auto;}
+.tab{
+  padding:16px 20px; font-size:0.86rem; font-weight:500; white-space:nowrap; cursor:pointer;
+  border-bottom:2px solid transparent; opacity:0.55; transition:all .15s; display:flex; align-items:center; gap:8px;
+}
+.tab .n{font-family:'IBM Plex Mono',monospace; font-size:0.72rem; color:var(--rust);}
+.tab.active{opacity:1; border-bottom-color:var(--rust);}
+.tab:hover{opacity:0.85;}
+
+.phase-view{display:none; padding:56px 0 90px;}
+.phase-view.active{display:block;}
+
+.phase-intro{margin-bottom:48px; max-width:640px;}
+.phase-intro .eyebrow{font-family:'IBM Plex Mono',monospace; font-size:0.76rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--rust); margin-bottom:10px;}
+.phase-intro h2{font-size:clamp(1.8rem,4vw,2.6rem); margin-bottom:12px;}
+.phase-intro p{color:rgba(33,29,22,0.65); font-size:1rem;}
+
+.screen-label{
+  font-family:'IBM Plex Mono',monospace; font-size:0.72rem; text-transform:uppercase; letter-spacing:0.05em;
+  color:rgba(33,29,22,0.45); margin:0 0 10px 2px; display:flex; align-items:center; gap:8px;
+}
+.screen-label::before{content:'▢'; color:var(--rust);}
+
+.screen{
+  background:var(--white); border:1px solid var(--line); border-radius:10px; overflow:hidden;
+  margin-bottom:56px; box-shadow:0 1px 2px rgba(33,29,22,0.04);
+}
+.screen-chrome{
+  background:var(--parchment-2); border-bottom:1px solid var(--line); padding:10px 16px;
+  display:flex; align-items:center; gap:8px;
+}
+.screen-chrome .dots{display:flex; gap:6px;}
+.screen-chrome .dots span{width:8px; height:8px; border-radius:50%; background:rgba(33,29,22,0.18);}
+.screen-chrome .url{font-family:'IBM Plex Mono',monospace; font-size:0.72rem; color:rgba(33,29,22,0.4); margin-left:8px;}
+.screen-body{padding:32px;}
+
+.mockbadge{
+  display:inline-flex; align-items:center; gap:6px; font-family:'IBM Plex Mono',monospace; font-size:0.66rem;
+  text-transform:uppercase; letter-spacing:0.05em; color:var(--rust); border:1px dashed var(--rust);
+  padding:3px 9px; border-radius:100px; margin-bottom:16px;
+}
+
+/* generic form styling */
+.field{margin-bottom:16px;}
+.field label{display:block; font-size:0.82rem; font-weight:500; margin-bottom:6px; color:rgba(33,29,22,0.7);}
+.field input, .field select, .field textarea{
+  width:100%; padding:10px 12px; border:1px solid var(--line); border-radius:6px; font-family:'Inter',sans-serif;
+  font-size:0.9rem; background:var(--parchment); color:var(--ink);
+}
+.field.disabled input, .field.disabled select, .field.disabled textarea{opacity:0.6; cursor:not-allowed;}
+.btn{
+  display:inline-block; padding:11px 22px; border-radius:6px; font-size:0.86rem; font-weight:600;
+  border:none; cursor:not-allowed; opacity:0.55; font-family:'Inter',sans-serif;
+}
+.btn.primary{background:var(--forest); color:var(--white);}
+.btn.ghost{background:transparent; border:1px solid var(--line); color:var(--ink);}
+
+/* profile card */
+.profile-hero{display:flex; gap:20px; align-items:center; margin-bottom:28px;}
+.avatar{width:64px; height:64px; border-radius:50%; background:linear-gradient(135deg,var(--forest),var(--gold)); flex-shrink:0;}
+.profile-hero h3{font-size:1.3rem;}
+.profile-hero .sub{font-size:0.86rem; color:rgba(33,29,22,0.55); margin-top:2px;}
+.chips{display:flex; gap:8px; margin-top:10px; flex-wrap:wrap;}
+.chip{font-family:'IBM Plex Mono',monospace; font-size:0.7rem; background:var(--parchment-2); padding:4px 10px; border-radius:100px; color:rgba(33,29,22,0.6);}
+
+.grid-2{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+.grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:16px;}
+@media (max-width:720px){.grid-2,.grid-3{grid-template-columns:1fr;}}
+
+/* directory list */
+.dir-item{display:flex; justify-content:space-between; align-items:center; padding:16px 0; border-bottom:1px solid var(--line);}
+.dir-item:last-child{border-bottom:none;}
+.dir-item .name{font-weight:600; font-size:0.95rem;}
+.dir-item .cat{font-family:'IBM Plex Mono',monospace; font-size:0.72rem; color:var(--rust); text-transform:uppercase;}
+.dir-item .loc{font-size:0.82rem; color:rgba(33,29,22,0.5); margin-top:2px;}
+
+/* issue report status */
+.status-pill{font-family:'IBM Plex Mono',monospace; font-size:0.68rem; text-transform:uppercase; padding:3px 10px; border-radius:100px;}
+.status-pill.new{background:#f3e0dc; color:var(--rust);}
+.status-pill.progress{background:#f3ecd6; color:#96751f;}
+.status-pill.done{background:#e2ede4; color:#3f7a52;}
+.issue-row{display:flex; gap:14px; align-items:flex-start; padding:16px 0; border-bottom:1px solid var(--line);}
+.issue-row:last-child{border-bottom:none;}
+.issue-thumb{width:56px; height:56px; border-radius:6px; background:var(--parchment-2); flex-shrink:0;}
+.issue-row h4{font-size:0.92rem; margin-bottom:4px;}
+.issue-row .meta{font-size:0.78rem; color:rgba(33,29,22,0.5);}
+
+/* family tree */
+.privacy-levels{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:36px;}
+.plevel{border-radius:8px; padding:18px; border:1px solid var(--line);}
+.plevel.pub{background:#eef4ef;}
+.plevel.link{background:#faf3de;}
+.plevel.priv{background:#f5e6e2;}
+.plevel .dot{width:10px;height:10px;border-radius:50%; display:inline-block; margin-right:8px;}
+.pub .dot{background:#3f7a52;} .link .dot{background:#c9a24b;} .priv .dot{background:#a6502e;}
+.plevel h4{font-size:0.9rem; margin-bottom:6px;}
+.plevel p{font-size:0.8rem; color:rgba(33,29,22,0.6);}
+
+.tree-wrap{overflow-x:auto; padding:20px 0;}
+.tree{display:flex; flex-direction:column; align-items:center; gap:36px; min-width:600px;}
+.tree-row{display:flex; gap:60px; position:relative;}
+.tree-node{
+  background:var(--white); border:1.5px solid var(--forest); border-radius:8px; padding:10px 16px;
+  font-size:0.82rem; font-weight:500; text-align:center; position:relative; min-width:110px;
+}
+.tree-node.dim{opacity:0.4; border-style:dashed;}
+.tree-node .role{display:block; font-family:'IBM Plex Mono',monospace; font-size:0.65rem; color:var(--rust); margin-top:2px;}
+.connector{width:2px; height:20px; background:var(--line); margin:0 auto;}
+
+/* events calendar */
+.cal-list{display:flex; flex-direction:column; gap:1px; background:var(--line); border:1px solid var(--line); border-radius:8px; overflow:hidden;}
+.cal-item{background:var(--white); display:flex; gap:16px; padding:16px 18px; align-items:center;}
+.cal-date{width:52px; text-align:center; flex-shrink:0;}
+.cal-date .d{font-family:'Fraunces',serif; font-size:1.3rem; font-weight:600; line-height:1;}
+.cal-date .m{font-family:'IBM Plex Mono',monospace; font-size:0.65rem; text-transform:uppercase; color:rgba(33,29,22,0.5);}
+.cal-item h4{font-size:0.9rem;}
+.cal-item .meta{font-size:0.78rem; color:rgba(33,29,22,0.5); margin-top:2px;}
+
+/* poll */
+.poll-option{display:flex; align-items:center; gap:12px; margin-bottom:12px;}
+.poll-track{flex:1; height:28px; background:var(--parchment-2); border-radius:6px; overflow:hidden; position:relative;}
+.poll-fill{height:100%; background:var(--forest); display:flex; align-items:center; padding-left:10px;}
+.poll-fill span{color:var(--white); font-size:0.76rem; font-family:'IBM Plex Mono',monospace;}
+.poll-pct{font-family:'IBM Plex Mono',monospace; font-size:0.8rem; width:40px; text-align:right;}
+
+/* classifieds */
+.ad-card{border:1px solid var(--line); border-radius:8px; padding:16px; background:var(--white);}
+.ad-card .tag{font-family:'IBM Plex Mono',monospace; font-size:0.66rem; text-transform:uppercase; color:var(--rust);}
+.ad-card h4{font-size:0.92rem; margin:6px 0 4px;}
+.ad-card .price{font-family:'IBM Plex Mono',monospace; font-size:0.85rem; color:var(--forest); font-weight:600;}
+
+footer{background:var(--forest-dark); color:rgba(244,239,225,0.6); padding:28px 0; text-align:center; font-size:0.78rem;}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="brand"><span class="dot"></span>Čizmići.ba</div>
+    <div class="protobadge">Prototip · vizuelni mockup</div>
+  </div>
+</div>
+
+<div class="tabs">
+  <div class="wrap">
+    <div class="tab" data-tab="f2"><span class="n">02</span> Naši ljudi</div>
+    <div class="tab" data-tab="f3"><span class="n">03</span> Moja porodica</div>
+    <div class="tab" data-tab="f4"><span class="n">04</span> Aktivna zajednica</div>
+  </div>
+</div>
+
+<!-- ================= FAZA 2 ================= -->
+<div class="phase-view" id="f2">
+  <div class="wrap">
+    <div class="phase-intro">
+      <div class="eyebrow">Faza 02</div>
+      <h2>Naši ljudi</h2>
+      <p>Registracija, profili mještana, biznis direktorij i prijava komunalnih problema. Ekrani ispod su vizuelni prikaz — dugmad i forme nisu funkcionalni.</p>
+    </div>
+
+    <div class="screen-label">Registracija / prijava</div>
+    <div class="screen">
+      <div class="screen-chrome"><div class="dots"><span></span><span></span><span></span></div><div class="url">cizmici.ba/prijava</div></div>
+      <div class="screen-body" style="max-width:380px; margin:0 auto;">
+        <span class="mockbadge">mockup</span>
+        <h3 style="font-size:1.3rem; margin-bottom:6px;">Dobrodošli nazad</h3>
+        <p style="font-size:0.86rem; color:rgba(33,29,22,0.55); margin-bottom:22px;">Prijavite se svojim nalogom ili nastavite sa Google računom.</p>
+        <div class="field disabled"><label>E-mail adresa</label><input placeholder="ime@email.com" disabled></div>
+        <div class="field disabled"><label>Lozinka</label><input type="password" placeholder="••••••••" disabled></div>
+        <button class="btn primary" style="width:100%; margin-bottom:10px;">Prijavi se</button>
+        <button class="btn ghost" style="width:100%;">Nastavi sa Google računom</button>
+      </div>
+    </div>
+
+    <div class="screen-label">Profil mještanina</div>
+    <div class="screen">
+      <div class="screen-chrome"><div class="dots"><span></span><span></span><span></span></div><div class="url">cizmici.ba/profil/mustafa-c</div></div>
+      <div class="screen-body">
+        <span class="mockbadge">mockup</span>
+        <div class="profile-hero">
+          <div class="avatar"></div>
+          <div>
+            <h3>Mustafa Čizmić</h3>
+            <div class="sub">Porijeklo: Čizmići · Trenutno: Ljubljana, Slovenija</div>
+            <div class="chips"><span class="chip">Softverski inženjer</span><span class="chip">Dijaspora</span><span class="chip">Contributor · 8 priloga</span></div>
+          </div>
+        </div>
+        <div class="grid-3">
+          <div style="border:1px solid var(--line); border-radius:8px; padding:16px;"><div class="mono" style="font-size:0.7rem; color:rgba(33,29,22,0.5); text-transform:uppercase;">Priče</div><div style="font-family:'Fraunces',serif; font-size:1.6rem; font-weight:600;">3</div></div>
+          <div style="border:1px solid var(--line); border-radius:8px; padding:16px;"><div class="mono" style="font-size:0.7rem; color:rgba(33,29,22,0.5); text-transform:uppercase;">Fotografije</div><div style="font-family:'Fraunces',serif; font-size:1.6rem; font-weight:600;">12</div></div>
+          <div style="border:1px solid var(--line); border-radius:8px; padding:16px;"><div class="mono" style="font-size:0.7rem; color:rgba(33,29,22,0.5); text-transform:uppercase;">Prijave problema</div><div style="font-family:'Fraunces',serif; font-size:1.6rem; font-weight:600;">1</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="screen-label">Biznis direktorij</div>
+    <div class="screen">
+      <div class="screen-chrome"><div class="dots"><span></span><span></span><span></span></div><div class="url">cizmici.ba/biznisi</div></div>
+      <div class="screen-body">
+        <span class="mockbadge">mockup</span>
+        <div class="grid-2" style="margin-bottom:20px;">
+          <div class="field" style="margin-bottom:0;"><input placeholder="Pretraži biznise (npr. 'vodoinstalater')" disabled></div>
+          <div class="field" style="margin-bottom:0;"><select disabled><option>Sve kategorije</option></select></div>
+        </div>
+        <div class="dir-item"><div><div class="name">Auto servis Čizmić</div><div class="loc">Čizmići 194 · osnovano 2016.</div></div><span class="cat">Servisi</span></div>
+        <div class="dir-item"><div><div class="name">Auto otpad Čizmić</div><div class="loc">Čizmići · osnovano 2015.</div></div><span class="cat">Auto dijelovi</span></div>
+        <div class="dir-item"><div><div class="name">Investment d.o.o.</div><div class="loc">Čizmići · osnovano 2025.</div></div><span class="cat">Investicije</span></div>
+        <div class="dir-item" style="opacity:0.5"><div><div class="name">+ Dodaj svoj biznis</div><div class="loc">Registrovani korisnici</div></div><span class="cat">Faza 2</span></div>
+      </div>
+    </div>
+
+    <div class="screen-label">Prijava komunalnog problema</div>
+    <div class="screen">
+      <div class="screen-chrome"><div class="dots"><span></span><span></span><span></span></div><div class="url">cizmici.ba/prijave</div></div>
+      <div class="screen-body">
+        <span class="mockbadge">mockup</span>
+        <div class="grid-2">
+          <div>
+            <div class="field disabled"><label>Vrsta problema</label><select disabled><option>🛣️ Oštećen put</option></select></div>
+            <div class="field disabled"><label>Lokacija</label><input placeholder="npr. put Čizmići–Kapići" disabled></div>
+            <div class="field disabled"><label>Opis</label><textarea rows="3" placeholder="Opišite problem..." disabled></textarea></div>
+            <button class="btn primary">Pošalji prijavu</button>
+          </div>
+          <div>
+            <div class="issue-row"><div class="issue-thumb"></div><div><h4>Oštećen put — Tiha dolina</h4><div class="meta">Prijavio Amir H. · prije 3 dana</div></div><span class="status-pill new">Prijavljeno</span></div>
+            <div class="issue-row"><div class="issue-thumb"></div><div><h4>Ne radi rasvjeta — Džematski put</h4><div class="meta">Prijavila Lejla M. · prije 1 sedmicu</div></div><span class="status-pill progress">U obradi</span></div>
+            <div class="issue-row"><div class="issue-thumb"></div><div><h4>Divlja deponija — Zelenac</h4><div class="meta">Prijavio Haris K. · prije 3 sedmice</div></div><span class="status-pill done">Riješeno</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= FAZA 3 ================= -->
+<div class="phase-view" id="f3">
+  <div class="wrap">
+    <div class="phase-intro">
+      <div class="eyebrow">Faza 03</div>
+      <h2>Moja porodica</h2>
+      <p>Porodična stabla i povezivanje među korisnicima, uz jasno razdvojene nivoe privatnosti. Najosjetljivija faza — gradi se tek kad Faza 1–2 dokažu da zajednica aktivno koristi platformu.</p>
+    </div>
+
+    <div class="screen-label">Nivoi privatnosti</div>
+    <div class="privacy-levels">
+      <div class="plevel pub"><h4><span class="dot"></span>Javno</h4><p>Vidljivo svima: naziv porodice i porijeklo (npr. "Porodica Čizmić — porijeklo: Čizmići").</p></div>
+      <div class="plevel link"><h4><span class="dot"></span>Samo povezani</h4><p>Detaljniji podaci vidljivi samo korisnicima koje je vlasnik stabla potvrdio kao rodbinu.</p></div>
+      <div class="plevel priv"><h4><span class="dot"></span>Privatno</h4><p>Podaci o živim osobama i djeci vidljivi isključivo samoj osobi koja ih je unijela.</p></div>
+    </div>
+
+    <div class="screen-label">Porodično stablo — prikaz</div>
+    <div class="screen">
+      <div class="screen-chrome"><div class="dots"><span></span><span></span><span></span></div><div class="url">cizmici.ba/porodica/cizmic</div></div>
+      <div class="screen-body">
+        <span class="mockbadge">mockup — ilustrativni primjer, imena izmišljena</span>
+        <div class="tree-wrap">
+          <div class="tree">
+            <div class="tree-node">Hasan Čizmić<span class="role">rođen ~1930.</span></div>
+            <div class="connector"></div>
+            <div class="tree-row">
+              <div style="display:flex; flex-direction:column; align-items:center;">
+                <div class="tree-node">Mustafa<span class="role">sin</span></div>
+                <div class="connector"></div>
+                <div style="display:flex; gap:16px;">
+                  <div class="tree-node dim">Amir<span class="role">unuk</span></div>
+                  <div class="tree-node dim">Adnan<span class="role">unuk</span></div>
+                </div>
+              </div>
+              <div style="display:flex; flex-direction:column; align-items:center;">
+                <div class="tree-node">Muhamed<span class="role">sin</span></div>
+                <div class="connector"></div>
+                <div style="display:flex; gap:16px;">
+                  <div class="tree-node dim">Haris<span class="role">unuk</span></div>
+                  <div class="tree-node dim">Lejla<span class="role">unuka</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="border-top:1px solid var(--line); padding-top:16px; margin-top:8px; display:flex; justify-content:space-between; align-items:center;">
+          <div style="font-size:0.82rem; color:rgba(33,29,22,0.55);">🔗 Sistem je pronašao moguću vezu sa porodicom "Halkić" — čeka potvrdu.</div>
+          <button class="btn ghost">Pregledaj prijedlog</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="screen-label">Pronađi rodbinu</div>
+    <div class="screen">
+      <div class="screen-chrome"><div class="dots"><span></span><span></span><span></span></div><div class="url">cizmici.ba/porodica/pretraga</div></div>
+      <div class="screen-body">
+        <span class="mockbadge">mockup</span>
+        <div class="grid-2">
+          <div class="field disabled"><label>Ime i prezime pretka</label><input placeholder="npr. Hasan Čizmić" disabled></div>
+          <div class="field disabled"><label>Približna godina rođenja</label><input placeholder="npr. 1930" disabled></div>
+        </div>
+        <button class="btn primary" style="margin-bottom:20px;">Pretraži</button>
+        <div style="font-size:0.84rem; color:rgba(33,29,22,0.6); border-top:1px solid var(--line); padding-top:16px;">Pronađene su 3 osobe sa sličnim podacima. Sistem ne tvrdi automatski da su rodbina — svaku vezu potvrđuju sami korisnici.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= FAZA 4 ================= -->
+<div class="phase-view" id="f4">
+  <div class="wrap">
+    <div class="phase-intro">
+      <div class="eyebrow">Faza 04</div>
+      <h2>Aktivna zajednica</h2>
+      <p>Ankete, događaji i oglasi zajednice, uz saradnju sa Savjetom MZ. Zaokružuje platformu iz "arhive podataka" u alat za svakodnevnu koordinaciju.</p>
+    </div>
+
+    <div class="grid-2">
+      <div>
+        <div class="screen-label">Anketa zajednice</div>
+        <div class="screen">
+          <div class="screen-chrome"><div class="dots"><span></span><span></span><span></span></div><div class="url">cizmici.ba/ankete</div></div>
+          <div class="screen-body">
+            <span class="mockbadge">mockup</span>
+            <h3 style="font-size:1rem; margin-bottom:16px;">Šta bi trebalo biti prioritet MZ u 2027?</h3>
+            <div class="poll-option"><div class="poll-track"><div class="poll-fill" style="width:42%"><span>Asfaltiranje puta</span></div></div><div class="poll-pct">42%</div></div>
+            <div class="poll-option"><div class="poll-track"><div class="poll-fill" style="width:27%"><span>Rasvjeta</span></div></div><div class="poll-pct">27%</div></div>
+            <div class="poll-option"><div class="poll-track"><div class="poll-fill" style="width:18%"><span>Društveni dom</span></div></div><div class="poll-pct">18%</div></div>
+            <div class="poll-option"><div class="poll-track"><div class="poll-fill" style="width:13%"><span>Park za djecu</span></div></div><div class="poll-pct">13%</div></div>
+            <div style="font-size:0.76rem; color:rgba(33,29,22,0.5); margin-top:10px;">184 glasa · neslužbena anketa zajednice, ne zamjenjuje odluku Savjeta MZ</div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="screen-label">Oglasi</div>
+        <div class="screen">
+          <div class="screen-chrome"><div class="dots"><span></span><span></span><span></span></div><div class="url">cizmici.ba/oglasi</div></div>
+          <div class="screen-body">
+            <span class="mockbadge">mockup</span>
+            <div class="grid-2">
+              <div class="ad-card"><span class="tag">Poljoprivreda</span><h4>Prodajem traktor IMT 539</h4><div class="price">4.200 KM</div></div>
+              <div class="ad-card"><span class="tag">Usluge</span><h4>Tražim majstora za fasadu</h4><div class="price">po dogovoru</div></div>
+              <div class="ad-card"><span class="tag">Poklanjam</span><h4>Drva za ogrjev</h4><div class="price">besplatno</div></div>
+              <div class="ad-card"><span class="tag">Posao</span><h4>Tražimo vozača — Auto servis</h4><div class="price">puno radno vrijeme</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="screen-label">Događaji</div>
+    <div class="screen">
+      <div class="screen-chrome"><div class="dots"><span></span><span></span><span></span></div><div class="url">cizmici.ba/dogadjaji</div></div>
+      <div class="screen-body">
+        <span class="mockbadge">mockup</span>
+        <div class="cal-list">
+          <div class="cal-item"><div class="cal-date"><div class="d">10</div><div class="m">Jul</div></div><div><h4>Dan MZ Čizmići</h4><div class="meta">Centar Čizmića · cjelodnevni program</div></div></div>
+          <div class="cal-item"><div class="cal-date"><div class="d">22</div><div class="m">Avg</div></div><div><h4>Turnir u malom nogometu</h4><div class="meta">Sportsko igralište · 17:00</div></div></div>
+          <div class="cal-item"><div class="cal-date"><div class="d">05</div><div class="m">Sep</div></div><div><h4>Akcija čišćenja — April mjesec čistoće nastavak</h4><div class="meta">Okuplja se kod Društvenog doma · 09:00</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>Prototip mockupa Faza 2–4 · Čizmići.ba · dizajn se mijenja sa daljim razvojem</footer>
+
+<script>
+const tabs = document.querySelectorAll('.tab');
+const views = document.querySelectorAll('.phase-view');
+function activate(id){
+  tabs.forEach(t=>t.classList.toggle('active', t.dataset.tab===id));
+  views.forEach(v=>v.classList.toggle('active', v.id===id));
+}
+tabs.forEach(t=>t.addEventListener('click', ()=>activate(t.dataset.tab)));
+activate('f2');
+</script>
+
+</body>
+</html>

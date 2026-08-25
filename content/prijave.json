@@ -1,0 +1,23 @@
+{
+  "illustrative": true,
+  "items": [
+    {
+      "title": "Oštećen put — Tiha dolina",
+      "meta": "Prijavio Amir H. · prije 3 dana",
+      "status": "new",
+      "statusLabel": "Prijavljeno"
+    },
+    {
+      "title": "Ne radi rasvjeta — Džematski put",
+      "meta": "Prijavila Lejla M. · prije 1 sedmicu",
+      "status": "progress",
+      "statusLabel": "U obradi"
+    },
+    {
+      "title": "Divlja deponija — Zelenac",
+      "meta": "Prijavio Haris K. · prije 3 sedmice",
+      "status": "done",
+      "statusLabel": "Riješeno"
+    }
+  ]
+}

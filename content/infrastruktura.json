@@ -1,0 +1,283 @@
+{
+  "intro": "10 lokalnih putnih pravaca u nadležnosti MZ, ukupne dužine 4,35 km (dokument iz 2021.). Klikni pravac ili objekat za sve dostupne podatke.",
+  "source": "official",
+  "roads": [
+    {
+      "id": "01",
+      "slug": "hasici-goretic-ahmo",
+      "name": "Raskrsnica Hašići – Goretić Ahmo",
+      "km": "0,20 km",
+      "from": "Hašići (raskrsnica)",
+      "to": "Goretić Ahmo",
+      "detail": [
+        "Lokalni putni pravac u nadležnosti MZ Čizmići, dužine 0,20 km prema evidenciji iz 2021.",
+        "Naziv u aktu ide od raskrsnice Hašići do kuće ili pojasa Goretić Ahmo. To su zaseoci, ne samostalna naseljena mjesta: popis 2013. i registar naselja Grada Cazina ih ne vode zasebno.",
+        "Džemat Čizmići iz 1998. Hašiće veže uz Čizmiće, Gradinu i ostatak džemata. Javna geometrija ovog kratkog pravca nije objavljena."
+      ],
+      "facts": [
+        { "label": "Evidencija", "value": "MZ Čizmići, 2021." },
+        { "label": "Dužina", "value": "0,20 km" },
+        { "label": "Od / do", "value": "Raskrsnica Hašići → Goretić Ahmo" },
+        { "label": "Nadležnost", "value": "Mjesna zajednica Čizmići" }
+      ]
+    },
+    {
+      "id": "02",
+      "slug": "cizmici-donji-halkici",
+      "name": "Raskrsnica Čizmići – Donji Halkići",
+      "km": "1,20 km",
+      "from": "Raskrsnica Čizmići",
+      "to": "Donji Halkići",
+      "detail": [
+        "Najduži lokalni pravac u evidenciji MZ poslije Čizmići–Kapići: 1,20 km, od raskrsnice u Čizmićima prema Donjim Halkićima.",
+        "Halkići (Donji i Gornji) se ne pojavljuju kao naseljeno mjesto u popisu ni u registru naselja Grada Cazina. Ime je zaseok / porodični toponim unutar MZ.",
+        "Naselje Slatina leži istočno od Čizmića i u javnim izvorima se spominje u istom širem pojasu; to nije potvrda da ovaj pravac završava u Slatini, nego orijentir u prostoru."
+      ],
+      "facts": [
+        { "label": "Evidencija", "value": "MZ Čizmići, 2021." },
+        { "label": "Dužina", "value": "1,20 km" },
+        { "label": "Od / do", "value": "Raskrsnica Čizmići → Donji Halkići" },
+        { "label": "Nadležnost", "value": "Mjesna zajednica Čizmići" }
+      ]
+    },
+    {
+      "id": "03",
+      "slug": "zelenac-gradina",
+      "name": "Zelenac – Gradina",
+      "km": "0,25 km",
+      "from": "Zelenac",
+      "to": "Gradina",
+      "detail": [
+        "Kratak pravac 0,25 km koji u evidenciji MZ spaja toponim Zelenac sa naseljem Gradina.",
+        "Gradina je dio MZ Čizmići. Popis 2013. bilježi 399 stanovnika, svi Bošnjaci.",
+        "Zelenac kao ime nije u registru naselja Grada Cazina — to je lokalni toponim, ne samostalno naseljeno mjesto."
+      ],
+      "facts": [
+        { "label": "Evidencija", "value": "MZ Čizmići, 2021." },
+        { "label": "Dužina", "value": "0,25 km" },
+        { "label": "Od / do", "value": "Zelenac → Gradina" },
+        { "label": "Stanovništvo Gradine", "value": "399 (popis 2013.)" }
+      ]
+    },
+    {
+      "id": "04",
+      "slug": "gradina-elazovo-brdo",
+      "name": "Gradina – Elazovo brdo",
+      "km": "0,20 km",
+      "from": "Gradina",
+      "to": "Elazovo brdo",
+      "detail": [
+        "Putni pravac 0,20 km od Gradine do Elazovog brda, u nadležnosti MZ.",
+        "2019. Grad Cazin donosi odluku o javnom interesu radi rekonstrukcije ovog pravca. Na ovoj stranici status ostaje „u realizaciji“ dok akt ne zatvori radove.",
+        "Elazovo brdo je brdski toponim, nije naseljeno mjesto u popisu ni u registru naselja."
+      ],
+      "facts": [
+        { "label": "Evidencija", "value": "MZ Čizmići, 2021. · odluka Grada 2019." },
+        { "label": "Dužina", "value": "0,20 km" },
+        { "label": "Od / do", "value": "Gradina → Elazovo brdo" },
+        { "label": "Projekt", "value": "Javni interes utvrđen, 2019." }
+      ]
+    },
+    {
+      "id": "05",
+      "slug": "cizmici-hrncic",
+      "name": "Čizmići – kuća Hrnčić Muhameda",
+      "km": "0,15 km",
+      "from": "Čizmići",
+      "to": "Kuća Hrnčić Muhameda",
+      "detail": [
+        "Prilaz 0,15 km od Čizmića do kuće Hrnčić Muhameda, prema evidenciji MZ 2021. Kraći je samo džematski put.",
+        "Akt imenuje privatnu kuću kao kraj puta. Javni registri ne objavljuju kućni broj pod tim imenom, pa ovdje stoji samo naziv iz evidencije MZ, bez adrese."
+      ],
+      "facts": [
+        { "label": "Evidencija", "value": "MZ Čizmići, 2021." },
+        { "label": "Dužina", "value": "0,15 km" },
+        { "label": "Od / do", "value": "Čizmići → kuća Hrnčić Muhameda" },
+        { "label": "Nadležnost", "value": "Mjesna zajednica Čizmići" }
+      ]
+    },
+    {
+      "id": "06",
+      "slug": "muranovici-cizmici-gornji-halkici",
+      "name": "Muranovići – Čizmići – Gornji Halkići",
+      "km": "0,70 km",
+      "from": "Muranovići",
+      "to": "Gornji Halkići",
+      "detail": [
+        "Pravac 0,70 km koji u evidenciji spaja zaseoke Muranovići i Gornji Halkići preko Čizmića.",
+        "Nijedan krajnji toponim nije samostalno naseljeno mjesto u popisu ni u listi naselja Grada Cazina. To su unutrašnji zaseoci MZ.",
+        "Čizmići su sredina imenovanog pravca: put ide kroz središte mjesne zajednice, ne kao veza dva susjedna sela."
+      ],
+      "facts": [
+        { "label": "Evidencija", "value": "MZ Čizmići, 2021." },
+        { "label": "Dužina", "value": "0,70 km" },
+        { "label": "Od / do", "value": "Muranovići → Čizmići → Gornji Halkići" },
+        { "label": "Nadležnost", "value": "Mjesna zajednica Čizmići" }
+      ]
+    },
+    {
+      "id": "07",
+      "slug": "tiha-dolina",
+      "name": "Tiha dolina",
+      "km": "0,25 km",
+      "from": "Tiha dolina",
+      "to": "Tiha dolina",
+      "detail": [
+        "Lokalni pravac 0,25 km pod imenom Tiha dolina, u nadležnosti MZ, evidencija 2021.",
+        "Ime sugerira udolinu ili zaseok, ne vezu dva naselja. U registru naselja i popisu 2013. nema zasebne stavke pod tim nazivom."
+      ],
+      "facts": [
+        { "label": "Evidencija", "value": "MZ Čizmići, 2021." },
+        { "label": "Dužina", "value": "0,25 km" },
+        { "label": "Tip", "value": "Lokalni pravac (jedno ime)" },
+        { "label": "Nadležnost", "value": "Mjesna zajednica Čizmići" }
+      ]
+    },
+    {
+      "id": "08",
+      "slug": "trisnjar",
+      "name": "Trišnjar",
+      "km": "0,20 km",
+      "from": "Trišnjar",
+      "to": "Trišnjar",
+      "detail": [
+        "Pravac 0,20 km pod imenom Trišnjar, u nadležnosti MZ.",
+        "2021. uz rekonstrukciju Kapići–Čizmići, za Trišnjar je pokrenut postupak eksproprijacije zemljišta — radovi su čekali imovinsko-pravne odnose.",
+        "Javni akti koje imamo ne daju katastarske brojeve ni završetak postupka. Status projekta ostaje onako kako stoji u aktu iz 2021. dok se ne nađe noviji izvor."
+      ],
+      "facts": [
+        { "label": "Evidencija", "value": "MZ Čizmići, 2021. · akt Grada 2021." },
+        { "label": "Dužina", "value": "0,20 km" },
+        { "label": "Tip", "value": "Lokalni pravac (jedno ime)" },
+        { "label": "Projekt", "value": "Eksproprijacija u toku (2021.)" }
+      ]
+    },
+    {
+      "id": "09",
+      "slug": "dzematski-put",
+      "name": "Džematski put",
+      "km": "0,10 km",
+      "from": "Džamija / džemat",
+      "to": "Lokalna mreža",
+      "detail": [
+        "Džematski put, 0,10 km — najkraći unos u evidenciji MZ 2021. Ime veže trasu uz džemat i džamiju, ne uz dva naselja.",
+        "Džemat Čizmići formiran je 1998. (Čizmići, Hašići, Gradina). Put je prilaz tom središtu džemata u mreži lokalnih pravaca."
+      ],
+      "facts": [
+        { "label": "Evidencija", "value": "MZ Čizmići, 2021." },
+        { "label": "Dužina", "value": "0,10 km" },
+        { "label": "Veza", "value": "Džemat Čizmići (1998.)" },
+        { "label": "Nadležnost", "value": "Mjesna zajednica Čizmići" }
+      ]
+    },
+    {
+      "id": "10",
+      "slug": "cizmici-kapici",
+      "name": "Čizmići – Kapići",
+      "km": "1,10 km",
+      "from": "Čizmići",
+      "to": "Kapići",
+      "detail": [
+        "Put Čizmići–Kapići, 1,10 km u evidenciji MZ. Povezuje Čizmiće sa susjednim naseljem Kapići, sjeverno od mjesne zajednice.",
+        "2021. Federacija BiH opredijelila je 123.510,02 KM namjenskih sredstava za rekonstrukciju ovog pravca.",
+        "Kapići su zasebno naseljeno mjesto. Popis 2013. bilježi 741 stanovnika."
+      ],
+      "facts": [
+        { "label": "Evidencija", "value": "MZ Čizmići, 2021." },
+        { "label": "Dužina u aktu", "value": "1,10 km" },
+        { "label": "Od / do", "value": "Čizmići → Kapići" },
+        { "label": "Projekt", "value": "Rekonstrukcija 2021. · 123.510,02 KM (FBiH)" },
+        { "label": "Kapići stanovništvo", "value": "741 (popis 2013.)" }
+      ]
+    }
+  ],
+  "objects": [
+    {
+      "slug": "asfalt",
+      "name": "Asfaltirane ceste",
+      "chip": "🛣️ Asfaltirane ceste",
+      "kind": "network",
+      "detail": [
+        "U opisu infrastrukture MZ navedene su asfaltirane ceste, uz vodovod, struju, rasvjetu i telefon.",
+        "Akt iz 2021. daje dužine 10 pravaca (ukupno 4,35 km), ne i podlogu (asfalt ili makadam) po stavci. Zato ovdje stoji da asfalt postoji u MZ, bez tvrdnje koji je od deset pravaca asfaltiran."
+      ],
+      "facts": [
+        { "label": "Broj pravaca", "value": "10" },
+        { "label": "Ukupna dužina", "value": "4,35 km" },
+        { "label": "Izvor", "value": "Evidencija MZ, 2021." }
+      ]
+    },
+    {
+      "slug": "vodovod",
+      "name": "Gradski vodovod",
+      "chip": "💧 Gradski vodovod",
+      "kind": "network",
+      "detail": [
+        "MZ Čizmići je u javnim opisima navedena kao pokrivena gradskim vodovodom Cazina.",
+        "Nema javnog popisa priključaka ni trase cijevi. Ovdje stoji činjenica priključenosti, bez hidrotehničkog plana."
+      ],
+      "facts": [
+        { "label": "Tip", "value": "Gradski vodovod" },
+        { "label": "Obuhvat", "value": "MZ Čizmići (javni opis)" },
+        { "label": "Izvor", "value": "Javni opis infrastrukture MZ" }
+      ]
+    },
+    {
+      "slug": "struja",
+      "name": "Električna mreža",
+      "chip": "⚡ Električna mreža",
+      "kind": "network",
+      "detail": [
+        "Električna mreža je navedena kao postojeća infrastruktura MZ.",
+        "Operator (elektrodistribucija) ne nudi javni popis stubova ni dalekovoda za Čizmiće. Stranica dokumentuje da mreža postoji."
+      ],
+      "facts": [
+        { "label": "Tip", "value": "Električna mreža" },
+        { "label": "Obuhvat", "value": "MZ Čizmići (javni opis)" }
+      ]
+    },
+    {
+      "slug": "rasvjeta",
+      "name": "Ulična rasvjeta",
+      "chip": "💡 Ulična rasvjeta",
+      "kind": "network",
+      "detail": [
+        "Ulična rasvjeta je navedena uz ostalu komunalnu infrastrukturu MZ.",
+        "Nema javnog inventara lampi. Pojedinačni kvarovi kasnije mogu ići kroz prijave problema."
+      ],
+      "facts": [
+        { "label": "Tip", "value": "Ulična rasvjeta" },
+        { "label": "Obuhvat", "value": "MZ Čizmići (javni opis)" }
+      ]
+    },
+    {
+      "slug": "telefon",
+      "name": "Telefonska infrastruktura",
+      "chip": "☎️ Telefonska infrastruktura",
+      "kind": "network",
+      "detail": [
+        "Telefonska infrastruktura navedena je u opisu opremljenosti MZ.",
+        "Operatori ne objavljuju kućne priključke. Ovdje stoji da mreža postoji, bez trase kabla."
+      ],
+      "facts": [
+        { "label": "Tip", "value": "Telefonska infrastruktura" },
+        { "label": "Obuhvat", "value": "MZ Čizmići (javni opis)" }
+      ]
+    },
+    {
+      "slug": "dzamija-dom",
+      "name": "Džamija i Društveni dom",
+      "chip": "🕌 Džamija i Društveni dom",
+      "kind": "object",
+      "detail": [
+        "Džamija i Društveni dom su središnji javni objekti MZ. Džemat je formiran 1998.; Dom je u Budžetu Grada Cazina 2023. predviđen za rekonstrukciju.",
+        "Džemat obuhvata Čizmiće, Hašiće i Gradinu. Sportsko igralište je zaseban objekat (izgrađeno 2017., 36×18 m) i vodi se na opštoj mapi mjesta, ne u ovoj stavci."
+      ],
+      "facts": [
+        { "label": "Džemat", "value": "Formiran 1998." },
+        { "label": "Dom", "value": "Rekonstrukcija u budžetu Grada, 2023." },
+        { "label": "Tip", "value": "Javni objekti MZ" }
+      ]
+    }
+  ]
+}

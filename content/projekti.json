@@ -1,0 +1,50 @@
+[
+  {
+    "status": "done",
+    "statusLabel": "Završeno",
+    "title": "Sportsko igralište Čizmići",
+    "body": "Teren 36×18 m za mali nogomet, rukomet i košarku; zemljište donirano od strane MZ.",
+    "year": "2017.",
+    "meta": "58.537 KM"
+  },
+  {
+    "status": "done",
+    "statusLabel": "Realizovano",
+    "title": "Rekonstrukcija Kapići – Čizmići",
+    "body": "Namjenska sredstva Federacije BiH za rekonstrukciju putnog pravca.",
+    "year": "2021.",
+    "meta": "123.510,02 KM"
+  },
+  {
+    "status": "progress",
+    "statusLabel": "Javni interes utvrđen",
+    "title": "Put Gradina – Elazovo brdo",
+    "body": "Odluka Grada Cazina o javnom interesu radi rekonstrukcije putnog pravca.",
+    "year": "2019.",
+    "meta": "u realizaciji"
+  },
+  {
+    "status": "progress",
+    "statusLabel": "Eksproprijacija u toku",
+    "title": "Put Trišnjar",
+    "body": "Rekonstrukcija je zahtijevala rješavanje imovinsko-pravnih odnosa.",
+    "year": "2021.",
+    "meta": "u realizaciji"
+  },
+  {
+    "status": "planned",
+    "statusLabel": "Budžetirano",
+    "title": "Rekonstrukcija Društvenog doma",
+    "body": "Stavka u Budžetu Grada Cazina za unapređenje multifunkcionalnog prostora MZ.",
+    "year": "2023.",
+    "meta": "Budžet Grada Cazina"
+  },
+  {
+    "status": "planned",
+    "statusLabel": "Ideja / Faza 4",
+    "title": "Digitalna prijava komunalnih problema",
+    "body": "Buduća funkcija platforme — prijava oštećenih puteva, rasvjete i divljih deponija sa statusom rješavanja.",
+    "year": "plan",
+    "meta": "Čizmići.ba"
+  }
+]

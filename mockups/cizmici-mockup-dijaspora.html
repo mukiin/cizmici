@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="bs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Čizmići — Mockup: Dijaspora i sadržaj</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+:root{
+  --ink:#211d16; --parchment:#f4efe1; --parchment-2:#ebe3cd;
+  --forest:#2f4a3c; --forest-dark:#1e332a; --rust:#a6502e; --gold:#c9a24b;
+  --line:rgba(33,29,22,0.14); --white:#fffdf8;
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+body{background:var(--parchment); color:var(--ink); font-family:'Inter',sans-serif; line-height:1.5;}
+h1,h2,h3{font-family:'Fraunces',serif; font-weight:600; letter-spacing:-0.01em;}
+.mono{font-family:'IBM Plex Mono',monospace;}
+.wrap{max-width:1120px; margin:0 auto; padding:0 28px;}
+
+.topbar{position:sticky; top:0; z-index:50; background:var(--forest-dark); color:var(--parchment); border-bottom:1px solid rgba(244,239,225,0.12);}
+.topbar .wrap{display:flex; align-items:center; justify-content:space-between; height:60px;}
+.brand{font-family:'Fraunces',serif; font-weight:700; display:flex; align-items:center; gap:8px;}
+.brand .dot{width:8px;height:8px;border-radius:50%;background:var(--rust);}
+.protobadge{font-family:'IBM Plex Mono',monospace; font-size:0.68rem; text-transform:uppercase; letter-spacing:0.05em; background:var(--rust); color:var(--white); padding:4px 10px; border-radius:100px;}
+
+.tabs{position:sticky; top:60px; z-index:49; background:rgba(244,239,225,0.95); backdrop-filter:blur(6px); border-bottom:1px solid var(--line);}
+.tabs .wrap{display:flex; gap:4px; overflow-x:auto;}
+.tab{padding:16px 18px; font-size:0.84rem; font-weight:500; white-space:nowrap; cursor:pointer; border-bottom:2px solid transparent; opacity:0.55; transition:all .15s;}
+.tab.active{opacity:1; border-bottom-color:var(--rust);}
+.tab:hover{opacity:0.85;}
+
+.view{display:none; padding:56px 0 90px;}
+.view.active{display:block;}
+.intro{margin-bottom:44px; max-width:640px;}
+.intro .eyebrow{font-family:'IBM Plex Mono',monospace; font-size:0.76rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--rust); margin-bottom:10px;}
+.intro h2{font-size:clamp(1.7rem,4vw,2.4rem); margin-bottom:10px;}
+.intro p{color:rgba(33,29,22,0.65); font-size:0.98rem;}
+
+.screen-label{font-family:'IBM Plex Mono',monospace; font-size:0.72rem; text-transform:uppercase; letter-spacing:0.05em; color:rgba(33,29,22,0.45); margin:0 0 10px 2px; display:flex; align-items:center; gap:8px;}
+.screen-label::before{content:'▢'; color:var(--rust);}
+.screen{background:var(--white); border:1px solid var(--line); border-radius:10px; overflow:hidden; margin-bottom:48px; box-shadow:0 1px 2px rgba(33,29,22,0.04);}
+.screen-chrome{background:var(--parchment-2); border-bottom:1px solid var(--line); padding:10px 16px; display:flex; align-items:center; gap:8px;}
+.screen-chrome .dots{display:flex; gap:6px;}
+.screen-chrome .dots span{width:8px; height:8px; border-radius:50%; background:rgba(33,29,22,0.18);}
+.screen-chrome .url{font-family:'IBM Plex Mono',monospace; font-size:0.72rem; color:rgba(33,29,22,0.4); margin-left:8px;}
+.screen-body{padding:32px;}
+.mockbadge{display:inline-flex; align-items:center; gap:6px; font-family:'IBM Plex Mono',monospace; font-size:0.66rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--rust); border:1px dashed var(--rust); padding:3px 9px; border-radius:100px; margin-bottom:16px;}
+
+/* dijaspora map */
+#dmap{height:420px; border-radius:6px; border:1px solid var(--line);}
+.diaspora-stats{display:grid; grid-template-columns:repeat(5,1fr); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:8px; overflow:hidden; margin-top:20px;}
+@media (max-width:760px){.diaspora-stats{grid-template-columns:repeat(2,1fr);}}
+.dstat{background:var(--white); padding:16px; text-align:center;}
+.dstat .flag{font-size:1.4rem;}
+.dstat .n{font-family:'Fraunces',serif; font-size:1.5rem; font-weight:600; color:var(--forest);}
+.dstat .l{font-size:0.72rem; color:rgba(33,29,22,0.5);}
+.total-banner{background:var(--forest); color:var(--white); border-radius:8px; padding:20px 24px; display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;}
+.total-banner .n{font-family:'Fraunces',serif; font-size:2.2rem; font-weight:600;}
+.total-banner .l{font-size:0.82rem; opacity:0.8;}
+.total-banner button{background:rgba(244,239,225,0.15); border:1px solid rgba(244,239,225,0.3); color:var(--white); padding:9px 16px; border-radius:6px; font-size:0.82rem; cursor:not-allowed;}
+
+/* email digest */
+.email-frame{max-width:520px; margin:0 auto; border:1px solid var(--line); border-radius:8px; overflow:hidden;}
+.email-head{background:var(--forest); color:var(--white); padding:24px; text-align:center;}
+.email-head .dot{width:8px;height:8px;border-radius:50%;background:var(--gold); display:inline-block; margin-right:8px;}
+.email-head h3{font-size:1.1rem; margin-top:8px;}
+.email-head p{font-size:0.78rem; opacity:0.75; margin-top:4px;}
+.email-body{padding:24px; background:var(--white);}
+.email-item{display:flex; gap:14px; padding:14px 0; border-bottom:1px solid var(--line);}
+.email-item:last-child{border-bottom:none;}
+.email-thumb{width:52px; height:52px; border-radius:6px; background:linear-gradient(135deg,var(--forest),var(--gold)); flex-shrink:0;}
+.email-item h4{font-size:0.9rem; margin-bottom:3px;}
+.email-item p{font-size:0.78rem; color:rgba(33,29,22,0.55);}
+.email-item .src{font-family:'IBM Plex Mono',monospace; font-size:0.66rem; color:var(--rust); margin-top:4px;}
+.email-cta{background:var(--parchment-2); text-align:center; padding:16px; font-size:0.78rem; color:rgba(33,29,22,0.6);}
+
+/* live strip */
+.strip{background:var(--forest-dark); color:var(--parchment); border-radius:8px; padding:14px 20px; display:flex; align-items:center; gap:28px; overflow-x:auto; font-size:0.82rem;}
+.strip .item{display:flex; align-items:center; gap:8px; white-space:nowrap;}
+.strip .sep{width:1px; height:16px; background:rgba(244,239,225,0.2);}
+.pulse{width:7px; height:7px; border-radius:50%; background:#5cb87a; box-shadow:0 0 0 rgba(92,184,122,0.5); animation:pulse 2s infinite;}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(92,184,122,0.5);} 70%{box-shadow:0 0 0 8px rgba(92,184,122,0);} 100%{box-shadow:0 0 0 0 rgba(92,184,122,0);}}
+
+/* greetings wall */
+.greet-grid{columns:3 280px; column-gap:16px;}
+@media (max-width:760px){.greet-grid{columns:1;}}
+.greet-card{break-inside:avoid; background:var(--white); border:1px solid var(--line); border-radius:8px; padding:18px; margin-bottom:16px;}
+.greet-card .who{display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;}
+.greet-card .name{font-weight:600; font-size:0.86rem;}
+.greet-card .loc{font-family:'IBM Plex Mono',monospace; font-size:0.68rem; color:var(--rust);}
+.greet-card p{font-size:0.86rem; color:rgba(33,29,22,0.7); font-style:italic;}
+
+/* content approval queue */
+.queue-item{border:1px solid var(--line); border-radius:8px; padding:18px; margin-bottom:14px; background:var(--white);}
+.queue-item .qhead{display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;}
+.queue-item h4{font-size:0.95rem;}
+.queue-item .src{font-family:'IBM Plex Mono',monospace; font-size:0.72rem; color:var(--rust); margin-top:3px;}
+.queue-item p{font-size:0.86rem; color:rgba(33,29,22,0.65); margin-bottom:14px;}
+.qactions{display:flex; gap:8px;}
+.qbtn{font-size:0.78rem; padding:7px 14px; border-radius:6px; border:1px solid var(--line); cursor:not-allowed; font-weight:600;}
+.qbtn.approve{background:#e2ede4; color:#3f7a52; border-color:transparent;}
+.qbtn.edit{background:transparent; color:var(--ink);}
+.qbtn.reject{background:transparent; color:var(--rust);}
+.confidence{font-family:'IBM Plex Mono',monospace; font-size:0.68rem; padding:3px 9px; border-radius:100px;}
+.confidence.high{background:#e2ede4; color:#3f7a52;}
+.confidence.review{background:#f3ecd6; color:#96751f;}
+
+footer{background:var(--forest-dark); color:rgba(244,239,225,0.6); padding:28px 0; text-align:center; font-size:0.78rem;}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="brand"><span class="dot"></span>Čizmići.ba</div>
+    <div class="protobadge">Prototip · vizuelni mockup</div>
+  </div>
+</div>
+
+<div class="tabs">
+  <div class="wrap">
+    <div class="tab" data-tab="map">🌍 Mapa dijaspore</div>
+    <div class="tab" data-tab="mail">✉️ Sedmični digest</div>
+    <div class="tab" data-tab="live">📡 Uživo traka</div>
+    <div class="tab" data-tab="greet">💬 Pozdravi</div>
+    <div class="tab" data-tab="queue">🤖 Agent — red za odobrenje</div>
+  </div>
+</div>
+
+<!-- MAPA DIJASPORE -->
+<div class="view" id="map">
+  <div class="wrap">
+    <div class="intro">
+      <div class="eyebrow">Dijaspora</div>
+      <h2>Gdje su danas Čizmićani?</h2>
+      <p>Korisnici dobrovoljno označe u profilu gdje trenutno žive. Mapa i brojke rastu kako se ljudi pridružuju — cilj je da dijaspora vidi da nije sama.</p>
+    </div>
+    <div class="screen-label">Javna stranica — Naša dijaspora</div>
+    <div class="screen">
+      <div class="screen-chrome"><div class="dots"><span></span><span></span><span></span></div><div class="url">cizmici.ba/dijaspora</div></div>
+      <div class="screen-body">
+        <span class="mockbadge">mockup — brojke izmišljene radi ilustracije</span>
+        <div class="total-banner">
+          <div><div class="n">312</div><div class="l">Čizmićana povezano iz 11 zemalja</div></div>
+          <button>+ Označi svoju lokaciju</button>
+        </div>
+        <div id="dmap"></div>
+        <div class="diaspora-stats">
+          <div class="dstat"><div class="flag">🇩🇪</div><div class="n">98</div><div class="l">Njemačka</div></div>
+          <div class="dstat"><div class="flag">🇦🇹</div><div class="n">64</div><div class="l">Austrija</div></div>
+          <div class="dstat"><div class="flag">🇸🇮</div><div class="n">41</div><div class="l">Slovenija</div></div>
+          <div class="dstat"><div class="flag">🇨🇭</div><div class="n">27</div><div class="l">Švicarska</div></div>
+          <div class="dstat"><div class="flag">🇸🇪</div><div class="n">15</div><div class="l">Švedska</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EMAIL DIGEST -->
+<div class="view" id="mail">
+  <div class="wrap">
+    <div class="intro">
+      <div class="eyebrow">Newsletter</div>
+      <h2>Sedmični digest za dijasporu</h2>
+      <p>Kratak email jednom sedmično — ne moraju ni otvarati aplikaciju da bi ostali u toku. Sastavlja ga isti agent koji puni blog, iz već odobrenog sadržaja te sedmice.</p>
+    </div>
+    <div class="screen-label">Primjer emaila</div>
+    <div class="email-frame">
+      <div class="email-head">
+        <span class="dot"></span><span class="mono" style="font-size:0.72rem; opacity:0.7;">ČIZMIĆI.BA · SEDMIČNI PREGLED</span>
+        <h3>Šta se dešavalo u Čizmićima ove sedmice</h3>
+        <p>18–24. august 2026.</p>
+      </div>
+      <div class="email-body">
+        <div class="email-item">
+          <div class="email-thumb"></div>
+          <div><h4>Završena sanacija dijela puta Tiha dolina</h4><p>Radovi trajali 4 dana, uključeno lokalno preduzeće.</p><div class="src">Izvor: gradcazin.gov.ba</div></div>
+        </div>
+        <div class="email-item">
+          <div class="email-thumb"></div>
+          <div><h4>Turnir u malom nogometu — prijave otvorene</h4><p>Igra se 22. augusta na igralištu u centru Čizmića.</p><div class="src">Izvor: Čizmići.ba događaji</div></div>
+        </div>
+        <div class="email-item">
+          <div class="email-thumb"></div>
+          <div><h4>Nova priča: "Prvi automobil u Čizmićima"</h4><p>Sjećanje mještanina Fadila H., poslano kroz aplikaciju.</p><div class="src">Izvor: prilog korisnika</div></div>
+        </div>
+      </div>
+      <div class="email-cta">Otvori Čizmići.ba &nbsp;·&nbsp; Odjavi se sa liste</div>
+    </div>
+  </div>
+</div>
+
+<!-- UŽIVO TRAKA -->
+<div class="view" id="live">
+  <div class="wrap">
+    <div class="intro">
+      <div class="eyebrow">Naslovna stranica</div>
+      <h2>"Uživo iz Čizmića" traka</h2>
+      <p>Tanka traka na vrhu naslovne koja daje osjećaj da je stranica živa — vrijeme, odbrojavanje do Dana MZ, zadnja vijest.</p>
+    </div>
+    <div class="screen-label">Traka na naslovnoj (izgled)</div>
+    <div class="screen">
+      <div class="screen-body" style="background:var(--forest); padding:0;">
+        <div style="padding:32px;">
+          <span class="mockbadge" style="border-color:rgba(244,239,225,0.4); color:var(--gold);">mockup</span>
+          <div class="strip">
+            <div class="item"><span class="pulse"></span> Čizmići, 22°C, sunčano</div>
+            <div class="sep"></div>
+            <div class="item">📅 318 dana do Dana MZ · 10. juli</div>
+            <div class="sep"></div>
+            <div class="item">📰 Zadnje: "Završena sanacija puta Tiha dolina"</div>
+            <div class="sep"></div>
+            <div class="item">👥 312 povezanih iz dijaspore</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- POZDRAVI -->
+<div class="view" id="greet">
+  <div class="wrap">
+    <div class="intro">
+      <div class="eyebrow">Zid poruka</div>
+      <h2>Pozdravi iz dijaspore</h2>
+      <p>Kratke poruke koje dijaspora ostavlja mjestu — posebno aktivno oko Bajrama i Dana MZ. Jeftino za napraviti, jako za osjećaj pripadnosti.</p>
+    </div>
+    <div class="screen-label">Zid pozdrava</div>
+    <div class="screen">
+      <div class="screen-chrome"><div class="dots"><span></span><span></span><span></span></div><div class="url">cizmici.ba/pozdravi</div></div>
+      <div class="screen-body">
+        <span class="mockbadge">mockup — imena i poruke izmišljene</span>
+        <div class="greet-grid">
+          <div class="greet-card"><div class="who"><span class="name">Emina H.</span><span class="loc">🇩🇪 München</span></div><p>Bajram šerif mubarek svim komšijama! Nedostaje mi zrak Čizmića.</p></div>
+          <div class="greet-card"><div class="who"><span class="name">Nedžad M.</span><span class="loc">🇦🇹 Graz</span></div><p>Sretan Dan MZ! Ove godine dolazimo cijela porodica na igralište.</p></div>
+          <div class="greet-card"><div class="who"><span class="name">Amina Č.</span><span class="loc">🇸🇮 Ljubljana</span></div><p>Divno je vidjeti da postoji ovakva stranica — hvala svima koji je grade.</p></div>
+          <div class="greet-card"><div class="who"><span class="name">Sead K.</span><span class="loc">🇨🇭 Zürich</span></div><p>Pozdrav Društvenom domu, radujemo se povratku na ljeto.</p></div>
+          <div class="greet-card"><div class="who"><span class="name">Fatima B.</span><span class="loc">🇸🇪 Malmö</span></div><p>Djeca me stalno pitaju o Čizmićima — sad im mogu pokazati mapu i slike.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- AGENT QUEUE -->
+<div class="view" id="queue">
+  <div class="wrap">
+    <div class="intro">
+      <div class="eyebrow">Admin panel</div>
+      <h2>Agent — red za odobrenje</h2>
+      <p>Ovo vidiš samo ti (admin). Agent svaki dan predlaže priloge iz javnih izvora; ništa se ne objavljuje bez tvog odobrenja.</p>
+    </div>
+    <div class="screen-label">Red čekanja — danas, 3 prijedloga</div>
+    <div class="screen">
+      <div class="screen-chrome"><div class="dots"><span></span><span></span><span></span></div><div class="url">cizmici.ba/admin/agent-queue</div></div>
+      <div class="screen-body">
+        <span class="mockbadge">mockup — sadržaj izmišljen radi ilustracije</span>
+
+        <div class="queue-item">
+          <div class="qhead">
+            <div><h4>Rekonstrukcija dijela puta Tiha dolina završena</h4><div class="src">Izvor: gradcazin.gov.ba/akti/2026-08-19 · pronađeno 20.08.2026.</div></div>
+            <span class="confidence high">Visoka pouzdanost</span>
+          </div>
+          <p>Sažetak agenta: "Prema aktu Grada Cazina od 19.08.2026, radovi na sanaciji putnog pravca Tiha dolina su završeni. Izvođač: lokalno preduzeće iz Cazina." — link na originalni akt priložen.</p>
+          <div class="qactions"><button class="qbtn approve">✓ Odobri i objavi</button><button class="qbtn edit">✎ Uredi</button><button class="qbtn reject">✕ Odbaci</button></div>
+        </div>
+
+        <div class="queue-item">
+          <div class="qhead">
+            <div><h4>Spomen na staru školu u Gradini</h4><div class="src">Izvor: cazin.net, članak od 15.08.2026. · pronađeno 20.08.2026.</div></div>
+            <span class="confidence review">Za provjeru</span>
+          </div>
+          <p>Sažetak agenta: "Članak spominje 'staru školu kod Gradine' u kontekstu obilježavanja godišnjice — nije jasno da li se odnosi na Gradinu u sastavu MZ Čizmići ili drugo istoimeno mjesto. Preporučujem ručnu provjeru prije objave."</p>
+          <div class="qactions"><button class="qbtn approve">✓ Odobri i objavi</button><button class="qbtn edit">✎ Uredi</button><button class="qbtn reject">✕ Odbaci</button></div>
+        </div>
+
+        <div class="queue-item">
+          <div class="qhead">
+            <div><h4>Novi obrt registrovan u Čizmićima</h4><div class="src">Izvor: javni poslovni registar · pronađeno 20.08.2026.</div></div>
+            <span class="confidence high">Visoka pouzdanost</span>
+          </div>
+          <p>Sažetak agenta: "Registrovan novi obrt s adresom u Čizmićima, djelatnost: stolarski radovi. Predlažem dodavanje u Biznis direktorij, sekcija Faza 2."</p>
+          <div class="qactions"><button class="qbtn approve">✓ Odobri i objavi</button><button class="qbtn edit">✎ Uredi</button><button class="qbtn reject">✕ Odbaci</button></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>Prototip mockupa · dijaspora i agent-sadržaj · Čizmići.ba</footer>
+
+<script>
+const tabs = document.querySelectorAll('.tab');
+const views = document.querySelectorAll('.view');
+function activate(id){
+  tabs.forEach(t=>t.classList.toggle('active', t.dataset.tab===id));
+  views.forEach(v=>v.classList.toggle('active', v.id===id));
+  if(id==='map' && !window._dmapInit){ initMap(); }
+}
+tabs.forEach(t=>t.addEventListener('click', ()=>activate(t.dataset.tab)));
+
+let dmap;
+function initMap(){
+  window._dmapInit = true;
+  dmap = L.map('dmap', {scrollWheelZoom:false, worldCopyJump:true}).setView([48, 12], 4);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {attribution:'&copy; OpenStreetMap contributors', maxZoom:18}).addTo(dmap);
+  function pin(n, color){
+    const size = 14 + Math.min(n/4, 26);
+    return L.divIcon({className:'', html:`<div style="width:${size}px;height:${size}px;border-radius:50%;background:${color};opacity:0.85;border:2px solid white;box-shadow:0 1px 4px rgba(0,0,0,0.35);display:flex;align-items:center;justify-content:center;color:white;font-family:IBM Plex Mono,monospace;font-size:10px;">${n}</div>`, iconSize:[size,size], iconAnchor:[size/2,size/2]});
+  }
+  const points = [
+    [44.9555,15.8935,'Čizmići (matično)','#a6502e',0],
+    [51.1657,10.4515,'Njemačka','#2f4a3c',98],
+    [47.5162,14.5501,'Austrija','#2f4a3c',64],
+    [46.1512,14.9955,'Slovenija','#2f4a3c',41],
+    [46.8182,8.2275,'Švicarska','#2f4a3c',27],
+    [60.1282,18.6435,'Švedska','#2f4a3c',15],
+  ];
+  points.forEach(([lat,lng,name,color,n])=>{
+    if(n===0){ L.marker([lat,lng]).addTo(dmap).bindPopup(`<b>${name}</b>`); }
+    else{ L.marker([lat,lng], {icon:pin(n,color)}).addTo(dmap).bindPopup(`<b>${name}</b><br>${n} povezanih`); }
+  });
+}
+activate('map');
+</script>
+
+</body>
+</html>
