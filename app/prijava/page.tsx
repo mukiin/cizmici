@@ -1,40 +1,56 @@
 import type { Metadata } from "next";
-import { MockNote } from "@/components/MockNote";
+import Link from "next/link";
+import { auth } from "@/auth";
+import { AuthForms } from "@/components/AuthForms";
 import { PageBand } from "@/components/PageBand";
+import { logoutMember } from "@/lib/actions/auth";
 
 export const metadata: Metadata = { title: "Prijava" };
 
-export default function PrijavaPage() {
+export default async function PrijavaPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ callbackUrl?: string }>;
+}) {
+  const session = await auth();
+  const params = await searchParams;
+  const callbackUrl = params.callbackUrl || "/";
+
   return (
     <>
       <PageBand
         kicker="Nalog"
         title="Prijava"
-        lead="Ekran je spreman. Prijava emailom ili Google nalogom dolazi u sljedećoj fazi — forme ništa ne šalju."
+        lead="Registracija i prijava emailom. Google prijava dolazi u kasnijoj fazi."
       />
       <section className="tight">
         <div className="wrap">
-          <div className="screen-card auth-box">
-            <MockNote>Registracija i prijava nisu aktivne. Možeš pregledati izgled ekrana.</MockNote>
-            <h2 style={{ fontSize: "1.3rem", marginBottom: 6 }}>Dobrodošli nazad</h2>
-            <p style={{ fontSize: "0.86rem", color: "rgba(33,29,22,0.55)", marginBottom: 22 }}>
-              Prijavite se svojim nalogom ili nastavite sa Google računom.
-            </p>
-            <div className="field disabled">
-              <label htmlFor="email">E-mail adresa</label>
-              <input id="email" type="email" placeholder="ime@email.com" disabled autoComplete="off" />
+          {session?.user ? (
+            <div className="screen-card auth-box">
+              <h2 style={{ fontSize: "1.3rem", marginBottom: 8 }}>Prijavljeni ste</h2>
+              <p style={{ marginBottom: 16 }}>
+                {session.user.name} · {session.user.email}
+                {session.user.role === "admin" ? " · administrator" : ""}
+              </p>
+              <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+                {session.user.role === "admin" ? (
+                  <Link href="/admin" className="btn primary">
+                    Admin panel
+                  </Link>
+                ) : null}
+                <Link href="/price" className="btn ghost">
+                  Priče
+                </Link>
+                <form action={logoutMember}>
+                  <button type="submit" className="btn ghost">
+                    Odjavi se
+                  </button>
+                </form>
+              </div>
             </div>
-            <div className="field disabled">
-              <label htmlFor="lozinka">Lozinka</label>
-              <input id="lozinka" type="password" placeholder="••••••••" disabled autoComplete="off" />
-            </div>
-            <button type="button" className="btn primary disabled" style={{ width: "100%", marginBottom: 10 }} disabled>
-              Prijavi se
-            </button>
-            <button type="button" className="btn ghost disabled" style={{ width: "100%" }} disabled>
-              Nastavi sa Google računom
-            </button>
-          </div>
+          ) : (
+            <AuthForms callbackUrl={callbackUrl} />
+          )}
         </div>
       </section>
     </>

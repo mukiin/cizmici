@@ -14,7 +14,14 @@ next-env.d.ts
 # debug / env
 npm-debug.log*
 .DS_Store
+.env
 .env*.local
+.neon
+.vercel
 
 # typescript
 *.tsbuildinfo
+.neon
+
+.vercel
+.env*

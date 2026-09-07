@@ -1,56 +1,62 @@
 import type { Metadata } from "next";
-import { MockNote } from "@/components/MockNote";
+import Link from "next/link";
+import { auth } from "@/auth";
+import { IssueSubmitForm } from "@/components/IssueSubmitForm";
 import { PageBand } from "@/components/PageBand";
-import { prijave } from "@/lib/data";
+import { listPublicIssues } from "@/lib/actions/content";
 
 export const metadata: Metadata = { title: "Prijave" };
 
-export default function PrijavePage() {
+const statusLabel: Record<string, string> = {
+  new: "Prijavljeno",
+  progress: "U obradi",
+  done: "Riješeno",
+};
+
+export default async function PrijavePage() {
+  const session = await auth();
+  const items = await listPublicIssues();
+
   return (
     <>
       <PageBand
         kicker="Komunalno"
         title="Prijava problema"
-        lead="Forma i statusi su spremni vizuelno. Slanje i obrada čekaju backend — ništa se još ne snima."
+        lead="Prijave ulaze odmah s statusom „novo“. Administrator mijenja status i može sakriti spam."
       />
       <section className="tight">
         <div className="wrap">
-          <MockNote>
-            Ovo je pregled ekrana. Dugme ne šalje prijavu. Primjeri na desnoj strani su izmišljeni radi izgleda.
-          </MockNote>
           <div className="grid-2">
+            {session?.user ? (
+              <IssueSubmitForm />
+            ) : (
+              <div className="screen-card">
+                <p>
+                  Za slanje prijave <Link href="/prijava?callbackUrl=/prijave">prijavite se</Link>.
+                </p>
+              </div>
+            )}
             <div className="screen-card">
-              <div className="field disabled">
-                <label htmlFor="vrsta">Vrsta problema</label>
-                <select id="vrsta" disabled defaultValue="put">
-                  <option value="put">Oštećen put</option>
-                  <option value="rasvjeta">Rasvjeta</option>
-                  <option value="deponija">Divlja deponija</option>
-                </select>
-              </div>
-              <div className="field disabled">
-                <label htmlFor="lokacija">Lokacija</label>
-                <input id="lokacija" placeholder="npr. put Čizmići–Kapići" disabled />
-              </div>
-              <div className="field disabled">
-                <label htmlFor="opis">Opis</label>
-                <textarea id="opis" rows={3} placeholder="Opišite problem..." disabled />
-              </div>
-              <button type="button" className="btn primary disabled" disabled>
-                Pošalji prijavu
-              </button>
-            </div>
-            <div className="screen-card">
-              {prijave.items.map((item) => (
-                <div className="issue-row" key={item.title}>
-                  <div className="issue-thumb" />
-                  <div style={{ flex: 1 }}>
-                    <h4>{item.title}</h4>
-                    <div className="meta">{item.meta}</div>
+              {items.length === 0 ? (
+                <p>Još nema javnih prijava.</p>
+              ) : (
+                items.map((item) => (
+                  <div className="issue-row" key={item.id}>
+                    <div className="issue-thumb" />
+                    <div style={{ flex: 1 }}>
+                      <h4>{item.title}</h4>
+                      <div className="meta">
+                        {item.authorName} · {item.createdAt.toLocaleDateString("bs-BA")} ·{" "}
+                        {statusLabel[item.status] ?? item.status}
+                      </div>
+                      <p style={{ marginTop: 6, fontSize: "0.9rem" }}>{item.body}</p>
+                    </div>
+                    <span className={`chip status-${item.status}`}>
+                      {statusLabel[item.status] ?? item.status}
+                    </span>
                   </div>
-                  <span className={`status-pill ${item.status}`}>{item.statusLabel}</span>
-                </div>
-              ))}
+                ))
+              )}
             </div>
           </div>
         </div>

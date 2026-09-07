@@ -819,6 +819,21 @@ section.alt .proj-card { background: var(--white); }
   opacity: 0.7;
   cursor: not-allowed;
 }
+.form-error {
+  color: #8b2e1f;
+  font-size: 0.86rem;
+  margin: 0 0 12px;
+}
+.form-ok {
+  color: #2f5d3a;
+  font-size: 0.86rem;
+  margin: 0 0 12px;
+}
+.story-card {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
 .btn {
   display: inline-block;
   padding: 11px 22px;

@@ -1,20 +1,22 @@
 # Stanje — Čizmići
 
-Ažurirano: 2026-08-26 01:10 (Europe/Sarajevo)
-Zadnji potez: Prvi git commit i push na GitHub `mukiin/cizmici`.
+Ažurirano: 2026-09-07 22:05 (Europe/Sarajevo)
+Zadnji potez: Vercel projekat povezan + env secrets; CLI deploy upload pada na mreži — treba commit/push + Redeploy.
 
 Neslužbena digitalna lična karta **MZ Čizmići** (Grad Cazin, USK). Nije sajt MZ ni Grada. Cilj: mještani + dijaspora (DE/AT/SI/CH).
 
 ## Sada radi
 
-- Next.js 15 App Router, sadržaj u `content/*.json`, `lib/data.ts` kao sloj (kasnije backend).
-- Početna je jedna duga „lična karta“ kao mockup `mockups/cizmici.html` (ne teaser kartice).
-- Historija: featured na početnoj, klik otvara `/historija/[slug]`.
-- Infrastruktura: tabela 10 pravaca + čipovi; klik otvara **opis i činjenice**, **bez mape puta**.
-- Opšta mapa naselja ostaje na početnoj (`/#mapa`) i `/mapa` (džamija, dom, igralište — okvirno).
-- Forme `/prijava`, `/prijave`, `/ankete` samo vizualno (disabled).
-- Live traka: Open-Meteo za Čizmiće, dani do Dana MZ (10. juli).
-- Hydration upozorenje u Chromeu: ekstenzije (`bis_skin_checked`, ColorZilla). Skripta `public/strip-extension-attrs.js` skida atribute prije hidracije.
+- Next.js 15 App Router; urednički sadržaj i dalje u `content/*.json` preko `lib/data.ts`.
+- **Neon Postgres** (`green-paper-25054361` / `production`) + **Drizzle** šema/migracije.
+- **Auth.js** email+lozinka: registracija mještana, prijava, JWT sesija; Google kasnije.
+- Role: `admin` | `member`. Seed admin: `npm run db:seed-admin` (env `ADMIN_EMAIL` / `ADMIN_PASSWORD`).
+- Žive **priče** (`/price`, `/price/[slug]`): mještanin šalje → `pending` → admin odobrava → `published`.
+- Žive **prijave** (`/prijave`): odmah `new`; admin status / sakrij.
+- **Admin panel** `/admin`, `/admin/price`, `/admin/prijave` (middleware samo za admin).
+- Početna/historija/infrastruktura/mapa i dalje JSON; forme ankete i dalje disabled.
+- Live traka: Open-Meteo + countdown do Dana MZ (10. juli).
+- `neon.ts` + `.neon` + `.env.local` (ne u git).
 
 ## Odluke (ne dirati bez pitanja)
 
@@ -23,30 +25,38 @@ Neslužbena digitalna lična karta **MZ Čizmići** (Grad Cazin, USK). Nije sajt
 - Ne izmišljati brojeve. Izvor označiti (službeni akt / statistika / javni izvor).
 - Faza 1 nav: hash linkovi (`/#historija` …) da skrolaju početnu. Dijaspora i Događaji ostaju prave rute.
 - Infrastruktura: nema ucrtavanja 10 puteva dok nema GPS/elaborata; ostaje tekst iz evidencije MZ 2021.
+- **ORM: Drizzle.** Auth: email+lozinka prvo, Google kasnije. Priče čekaju odobrenje admina.
+- Baza: Neon managed Postgres (ne lokalni Docker).
 
 ## Ne graditi još
 
 - Porodična stabla / matching
-- Admin / red čekanja agenata
 - Email digest HTML
 - Oglasi, vaktija, dženaze, donacije
-- CMS, auth, dijaspora mapa opt-in (objave), žive prijave/ankete
+- Dijaspora mapa opt-in (objave)
+- Žive ankete
+- Google OAuth
+- CMS za historiju/infrastrukturu/… (JSON ostaje dok ne krene Faza D)
 
 ## Sljedeće
 
-- Na drugom računaru: `git clone https://github.com/mukiin/cizmici.git`, otvori folder u Cursoru, novi Agent chat čita `STANJE.md`.
-- Chat historija se ne prenosi. Dalje: `git pull` / `git push`.
-- Kasnije (ne sad): CMS, auth, žive forme, tačne geometrije puteva.
+- Commit + push novog koda (auth/DB) na GitHub, zatim Vercel Redeploy / Git connect (CLI upload trenutno `fetch failed`).
+- Faza D: admin CRUD + migracija uredničkog JSON sadržaja u DB.
+- Google prijava.
+- (Opcionalno) žive ankete.
 
 ## Tehničko
 
-- Folder: `cizmici` na Desktopu. Dev server često **port 3005** (3000 je Grafana na ovom PC-u).
-- Stack: Next 15.5, React 19, Leaflet samo za mapu naselja.
-- Codacy MCP: poslije svakog edit-a `codacy_cli_analyze`; poslije npm install — trivy.
-- Dnevnik agenta: pravilo `.cursor/rules/stanje.mdc` (always), skill `.cursor/skills/azuriraj-stanje/`, hookovi `sessionStart` + `stop` u `.cursor/hooks.json`.
+- Folder: `cizmici` (Next root). Dev: `npm run dev` → **port 3005**.
+- Stack: Next 15.5, React 19, Drizzle, Auth.js v5, Neon serverless driver, Leaflet za mapu.
+- Skripte: `db:generate`, `db:migrate`, `db:seed-admin`.
+- Codacy MCP: poslije edit-a `codacy_cli_analyze`; poslije npm install — trivy (MCP trenutno često nedostupan — reset ekstenzije).
+- Dnevnik: `.cursor/rules/stanje.mdc` + skill `azuriraj-stanje`.
 
 ## Changelog
 
+- 2026-09-07: Vercel `mukiin/cizmici` link + Production/Preview env (Neon/Auth); URL https://cizmici.vercel.app (još stari deploy dok se ne pusha novi kod).
+- 2026-09-06: Neon link + Drizzle tabele + Auth + žive priče/prijave + /admin; mock forme skinute.
 - 2026-08-26: GitHub remote `https://github.com/mukiin/cizmici.git` — prvi commit na `main`.
 - 2026-08-26: Dnevnik `STANJE.md` + agent (pravilo, skill, hookovi) da se stanje dopisuje poslije svake izmjene.
 - 2026-08-26: Hydration mismatch — skripta skida atribute Chrome ekstenzija prije hidracije.

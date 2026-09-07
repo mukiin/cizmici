@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import Script from "next/script";
 import { Fraunces, IBM_Plex_Mono, Inter } from "next/font/google";
+import { auth } from "@/auth";
 import { Footer } from "@/components/Footer";
 import { Nav } from "@/components/Nav";
 import { site } from "@/lib/data";
@@ -32,12 +33,20 @@ export const metadata: Metadata = {
   description: site.tagline,
 };
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default async function RootLayout({ children }: { children: ReactNode }) {
+  const session = await auth();
+
   return (
     <html lang="bs" suppressHydrationWarning>
       <body className={`${inter.variable} ${fraunces.variable} ${mono.variable}`} suppressHydrationWarning>
         <Script id="strip-ext-attrs" src="/strip-extension-attrs.js" strategy="beforeInteractive" />
-        <Nav />
+        <Nav
+          user={
+            session?.user
+              ? { name: session.user.name, role: session.user.role }
+              : null
+          }
+        />
         {children}
         <Footer />
       </body>

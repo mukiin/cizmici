@@ -9,10 +9,15 @@ function isActive(pathname: string, hash: string, href: string) {
   if (href.startsWith("/#")) {
     return pathname === "/" && hash === href.slice(1);
   }
-  return pathname === href;
+  return pathname === href || (href !== "/" && pathname.startsWith(`${href}/`));
 }
 
-export function Nav() {
+type NavUser = {
+  name?: string | null;
+  role?: "admin" | "member";
+} | null;
+
+export function Nav({ user }: { user?: NavUser }) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [hash, setHash] = useState("");
@@ -24,10 +29,7 @@ export function Nav() {
     return () => window.removeEventListener("hashchange", sync);
   }, [pathname]);
 
-  function onNavClick(
-    event: { preventDefault: () => void },
-    href: string,
-  ) {
+  function onNavClick(event: { preventDefault: () => void }, href: string) {
     setOpen(false);
     if (pathname !== "/" || !href.startsWith("/#")) return;
     event.preventDefault();
@@ -36,6 +38,13 @@ export function Nav() {
     window.history.replaceState(null, "", href);
     setHash(`#${id}`);
   }
+
+  const ctaHref = user ? (user.role === "admin" ? "/admin" : "/prijava") : "/prijava";
+  const ctaLabel = user
+    ? user.role === "admin"
+      ? "Admin"
+      : user.name?.split(" ")[0] || "Nalog"
+    : "Prijava";
 
   return (
     <nav className="site-nav">
@@ -56,8 +65,8 @@ export function Nav() {
             </Link>
           ))}
         </div>
-        <Link href="/prijava" className="nav-cta">
-          Prijava
+        <Link href={ctaHref} className="nav-cta">
+          {ctaLabel}
         </Link>
         <button
           type="button"
@@ -80,6 +89,9 @@ export function Nav() {
             {link.label}
           </Link>
         ))}
+        <Link href={ctaHref} onClick={() => setOpen(false)}>
+          {ctaLabel}
+        </Link>
       </div>
     </nav>
   );

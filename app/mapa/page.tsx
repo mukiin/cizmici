@@ -8,7 +8,7 @@ export const metadata: Metadata = { title: "Mapa" };
 export default function MapaPage() {
   return (
     <>
-      <PageBand kicker="04 — Teren" title="Mapa Čizmića" lead={mapa.intro} />
+      <PageBand kicker="04 — Teren" title="Mapa Čizmića" lead={mapa.intro ?? ""} />
       <section className="tight alt">
         <div className="wrap">
           <LocalMapLoader data={mapa} />
