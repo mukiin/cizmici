@@ -1,21 +1,21 @@
-# Stanje — Čizmići
+﻿# Stanje — Čizmići
 
-Ažurirano: 2026-09-10 21:45 (Europe/Sarajevo)
-Zadnji potez: Google OAuth (opciono preko GOOGLE_CLIENT_ID/SECRET).
+Ažurirano: 2026-09-10 22:15 (Europe/Sarajevo)
+Zadnji potez: Domen i emailovi prebačeni na **cizmici.net**.
 
 Neslužbena digitalna lična karta **MZ Čizmići** (Grad Cazin, USK).
 
 ## Sada radi
 
-- Auth: email+lozinka + **Google** (ako su env varovi postavljeni).
-- JWT session; DrizzleAdapter samo kad je Google uključen (OAuth link).
-- Kompletan admin CMS.
-- Priče / prijave.
+- Auth + Google; session sync.
+- Admin CMS + Korisnici.
+- Super-admin `cizmicm@cizmici.net` — uvijek admin, zaštićen.
+- Domen: **cizmici.net**
 
 ## Odluke
 
-- Google korisnici = `member`. Admin ostaje credentials.
-- `allowDangerousEmailAccountLinking` — isti email spaja Google + postojeći nalog.
+- Super-admin u `lib/super-admin.ts`.
+- Javni domen / metadataBase / sitemap → cizmici.net
 
 ## Ne graditi još
 
@@ -23,18 +23,14 @@ Neslužbena digitalna lična karta **MZ Čizmići** (Grad Cazin, USK).
 
 ## Sljedeće
 
-- Postavi Google credentials u `.env.local` + Vercel.
 - Commit + push.
 
 ## Tehničko
 
 - Dev: `npm run dev` → :3005
-- Redirect URI: `/api/auth/callback/google`
+- Prijava vlasnika: `cizmicm@cizmici.net`
 
 ## Changelog
 
-- 2026-09-10: Google OAuth provider + dugme na /prijava.
-- 2026-09-10: Admin CMS za sve editorial tabele.
-- 2026-09-10: Auth/session perf.
-- 2026-09-07: Relacione editorial tabele.
-- 2026-09-06: Auth + stories/issues.
+- 2026-09-10: cizmici.ba → cizmici.net (kod + DB).
+- 2026-09-10: Super-admin cizmicm; session sync; Google OAuth; CMS.

@@ -7,6 +7,7 @@ import { z } from "zod";
 import { authConfig } from "@/auth.config";
 import { db } from "@/lib/db";
 import { accounts, sessions, users, verificationTokens } from "@/lib/db/schema";
+import { isSuperAdminEmail } from "@/lib/super-admin";
 
 const credentialsSchema = z.object({
   email: z.string().email(),
@@ -61,39 +62,68 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         const ok = await bcrypt.default.compare(parsed.data.password, user.passwordHash);
         if (!ok) return null;
 
+        const role = isSuperAdminEmail(user.email) ? "admin" : user.role;
+
         return {
           id: user.id,
           email: user.email,
           name: user.name,
-          role: user.role,
+          role,
         };
       },
     }),
   ],
   callbacks: {
     ...authConfig.callbacks,
-    async jwt({ token, user }) {
+    async jwt({ token, user, trigger }) {
       if (user) {
         token.id = user.id!;
-        const fromUser = (user as { role?: "admin" | "member" }).role;
-        if (fromUser) {
-          token.role = fromUser;
-        } else if (user.email) {
-          const [row] = await db
-            .select({ id: users.id, role: users.role })
-            .from(users)
-            .where(eq(users.email, user.email.toLowerCase()))
-            .limit(1);
-          if (row) {
-            token.id = row.id;
-            token.role = row.role;
+        if (isSuperAdminEmail(user.email)) {
+          token.role = "admin";
+        } else {
+          const fromUser = (user as { role?: "admin" | "member" }).role;
+          if (fromUser) {
+            token.role = fromUser;
+          } else if (user.email) {
+            const [row] = await db
+              .select({ id: users.id, role: users.role })
+              .from(users)
+              .where(eq(users.email, user.email.toLowerCase()))
+              .limit(1);
+            if (row) {
+              token.id = row.id;
+              token.role = isSuperAdminEmail(user.email) ? "admin" : row.role;
+            } else {
+              token.role = "member";
+            }
           } else {
             token.role = "member";
           }
-        } else {
-          token.role = "member";
         }
       }
+
+      // Osveži role iz baze (npr. nakon promote u admina + session.update())
+      if (trigger === "update" && token.id) {
+        if (isSuperAdminEmail(token.email as string | undefined)) {
+          token.role = "admin";
+        } else {
+          const [row] = await db
+            .select({ role: users.role, email: users.email })
+            .from(users)
+            .where(eq(users.id, String(token.id)))
+            .limit(1);
+          if (row) {
+            token.role = isSuperAdminEmail(row.email) ? "admin" : row.role;
+            token.email = row.email;
+          }
+        }
+      }
+
+      // Trajni vlasnik uvijek admin u JWT-u
+      if (isSuperAdminEmail(token.email as string | undefined)) {
+        token.role = "admin";
+      }
+
       return token;
     },
   },

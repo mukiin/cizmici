@@ -3,13 +3,14 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect } from "react";
-import { logoutMember } from "@/lib/actions/auth";
+import { LogoutButton } from "@/components/LogoutButton";
 
 const links = [
   { href: "/admin", label: "Pregled" },
   { href: "/admin/sadrzaj", label: "Sadržaj" },
   { href: "/admin/price", label: "Priče" },
   { href: "/admin/prijave", label: "Prijave" },
+  { href: "/admin/korisnici", label: "Korisnici" },
   { href: "/", label: "Javni sajt" },
 ] as const;
 
@@ -48,11 +49,7 @@ export function AdminNav() {
             </Link>
           ))}
         </div>
-        <form action={logoutMember}>
-          <button type="submit" className="nav-cta">
-            Odjavi se
-          </button>
-        </form>
+        <LogoutButton className="nav-cta" />
       </div>
     </nav>
   );

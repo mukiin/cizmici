@@ -18,9 +18,10 @@ export default async function AdminHomePage() {
       <h1 style={{ fontFamily: "var(--font-fraunces)", fontSize: "2rem", marginBottom: 8 }}>
         Panel
       </h1>
-      <p style={{ marginBottom: 28, color: "rgba(33,29,22,0.65)" }}>
+      <p style={{ marginBottom: 24, color: "rgba(33,29,22,0.65)" }}>
         Na čekanju: {pending} priča · Otvorene prijave: {openIssues} ·{" "}
-        <Link href="/admin/sadrzaj">Uredi sadržaj lične karte →</Link>
+        <Link href="/admin/sadrzaj">Uredi sadržaj →</Link> ·{" "}
+        <Link href="/admin/korisnici">Korisnici →</Link>
       </p>
 
       <div className="grid-2">

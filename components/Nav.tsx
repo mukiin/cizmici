@@ -14,11 +14,17 @@ function isActive(pathname: string, hash: string, href: string) {
 }
 
 export function Nav() {
-  const { data: session } = useSession();
+  const { data: session, status, update } = useSession();
   const user = session?.user;
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [hash, setHash] = useState("");
+
+  useEffect(() => {
+    void update();
+    // Samo pri promjeni rute — ne vježi `update` (nestabilna ref).
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pathname]);
 
   useEffect(() => {
     const sync = () => setHash(window.location.hash);
@@ -38,11 +44,14 @@ export function Nav() {
   }
 
   const ctaHref = user ? (user.role === "admin" ? "/admin" : "/prijava") : "/prijava";
-  const ctaLabel = user
-    ? user.role === "admin"
-      ? "Admin"
-      : user.name?.split(" ")[0] || "Nalog"
-    : "Prijava";
+  const ctaLabel =
+    status === "loading"
+      ? "…"
+      : user
+        ? user.role === "admin"
+          ? "Admin"
+          : user.name?.split(" ")[0] || "Nalog"
+        : "Prijava";
 
   return (
     <nav className="site-nav">

@@ -11,6 +11,7 @@
     "db:migrate": "drizzle-kit migrate",
     "db:studio": "drizzle-kit studio",
     "db:seed-admin": "tsx scripts/seed-admin.ts",
+    "db:seed-super-admin": "tsx scripts/seed-super-admin.ts",
     "db:seed-cms": "tsx scripts/seed-cms.ts",
     "db:seed-editorial": "tsx scripts/seed-editorial.ts"
   },

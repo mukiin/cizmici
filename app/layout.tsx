@@ -25,7 +25,7 @@ const mono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://cizmici.ba"),
+  metadataBase: new URL("https://cizmici.net"),
   title: {
     default: "Čizmići — Lična karta mjesne zajednice",
     template: "%s · Čizmići",

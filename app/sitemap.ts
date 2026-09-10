@@ -1,4 +1,4 @@
-import { getHistorijaAll, getInfraObjekti, getPutevi } from "@/lib/data";
+﻿import { getHistorijaAll, getInfraObjekti, getPutevi } from "@/lib/data";
 import { allRoutes } from "@/lib/nav";
 
 export default async function sitemap() {
@@ -9,7 +9,7 @@ export default async function sitemap() {
   ]);
 
   const pages = allRoutes.map((path) => ({
-    url: `https://cizmici.ba${path}`,
+    url: `https://cizmici.net${path}`,
     changeFrequency: "monthly" as const,
     priority: path === "/" ? 1 : 0.7,
   }));
@@ -19,7 +19,7 @@ export default async function sitemap() {
     ...putevi.map((item) => `/infrastruktura/${item.slug}`),
     ...infraObjekti.map((item) => `/infrastruktura/${item.slug}`),
   ].map((path) => ({
-    url: `https://cizmici.ba${path}`,
+    url: `https://cizmici.net${path}`,
     changeFrequency: "monthly" as const,
     priority: 0.6,
   }));

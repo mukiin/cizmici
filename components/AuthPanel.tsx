@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useSession } from "next-auth/react";
 import { AuthForms } from "@/components/AuthForms";
-import { logoutMember } from "@/lib/actions/auth";
+import { LogoutButton } from "@/components/LogoutButton";
 
 export function AuthPanel({
   callbackUrl = "/",
@@ -39,11 +39,7 @@ export function AuthPanel({
           <Link href="/price" className="btn ghost">
             Priče
           </Link>
-          <form action={logoutMember}>
-            <button type="submit" className="btn ghost">
-              Odjavi se
-            </button>
-          </form>
+          <LogoutButton />
         </div>
       </div>
     );
