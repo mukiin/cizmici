@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useSession } from "next-auth/react";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { footerLinks, navLinks } from "@/lib/nav";
@@ -12,12 +13,9 @@ function isActive(pathname: string, hash: string, href: string) {
   return pathname === href || (href !== "/" && pathname.startsWith(`${href}/`));
 }
 
-type NavUser = {
-  name?: string | null;
-  role?: "admin" | "member";
-} | null;
-
-export function Nav({ user }: { user?: NavUser }) {
+export function Nav() {
+  const { data: session } = useSession();
+  const user = session?.user;
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [hash, setHash] = useState("");

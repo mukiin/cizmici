@@ -19,7 +19,7 @@ async function main() {
     throw new Error("ADMIN_PASSWORD mora imati najmanje 8 karaktera");
   }
 
-  const passwordHash = await bcrypt.hash(password, 12);
+  const passwordHash = await bcrypt.hash(password, 10);
   const [existing] = await db.select().from(users).where(eq(users.email, email)).limit(1);
 
   if (existing) {

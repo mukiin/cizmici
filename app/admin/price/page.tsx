@@ -1,7 +1,5 @@
-import {
-  listAllStoriesAdmin,
-  setStoryStatus,
-} from "@/lib/actions/content";
+import { listAllStoriesAdmin } from "@/lib/admin-queries";
+import { setStoryStatus } from "@/lib/actions/content";
 
 export default async function AdminPricePage() {
   const stories = await listAllStoriesAdmin();

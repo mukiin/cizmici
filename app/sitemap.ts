@@ -1,7 +1,13 @@
-import { historija, infraObjekti, putevi } from "@/lib/data";
+import { getHistorijaAll, getInfraObjekti, getPutevi } from "@/lib/data";
 import { allRoutes } from "@/lib/nav";
 
-export default function sitemap() {
+export default async function sitemap() {
+  const [historija, putevi, infraObjekti] = await Promise.all([
+    getHistorijaAll(),
+    getPutevi(),
+    getInfraObjekti(),
+  ]);
+
   const pages = allRoutes.map((path) => ({
     url: `https://cizmici.ba${path}`,
     changeFrequency: "monthly" as const,

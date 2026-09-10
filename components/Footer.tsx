@@ -1,9 +1,11 @@
 import Link from "next/link";
-import { site } from "@/lib/data";
+import { getSite } from "@/lib/data";
 import { footerLinks } from "@/lib/nav";
 import { SourceBadge } from "./SourceBadge";
 
-export function Footer() {
+export async function Footer() {
+  const site = await getSite();
+
   return (
     <footer className="site-footer">
       <div className="wrap">

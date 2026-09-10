@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import Script from "next/script";
 import { Fraunces, IBM_Plex_Mono, Inter } from "next/font/google";
-import { auth } from "@/auth";
-import { Footer } from "@/components/Footer";
-import { Nav } from "@/components/Nav";
-import { site } from "@/lib/data";
+import { Providers } from "@/components/Providers";
 import "./globals.css";
+
+/** Editorial pages can reuse cached HTML/RSC for two minutes. */
+export const revalidate = 120;
 
 const inter = Inter({
   subsets: ["latin", "latin-ext"],
@@ -30,25 +30,16 @@ export const metadata: Metadata = {
     default: "Čizmići — Lična karta mjesne zajednice",
     template: "%s · Čizmići",
   },
-  description: site.tagline,
+  description: "Neslužbena digitalna lična karta MZ Čizmići (Grad Cazin).",
+  icons: { icon: "/favicon.svg" },
 };
 
-export default async function RootLayout({ children }: { children: ReactNode }) {
-  const session = await auth();
-
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="bs" suppressHydrationWarning>
       <body className={`${inter.variable} ${fraunces.variable} ${mono.variable}`} suppressHydrationWarning>
         <Script id="strip-ext-attrs" src="/strip-extension-attrs.js" strategy="beforeInteractive" />
-        <Nav
-          user={
-            session?.user
-              ? { name: session.user.name, role: session.user.role }
-              : null
-          }
-        />
-        {children}
-        <Footer />
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

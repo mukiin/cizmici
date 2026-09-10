@@ -1,17 +1,13 @@
 import Link from "next/link";
+import { getAdminOverview } from "@/lib/admin-queries";
 import {
-  listAllIssuesAdmin,
-  listAllStoriesAdmin,
   setIssueStatus,
   setIssueVisibility,
   setStoryStatus,
 } from "@/lib/actions/content";
 
 export default async function AdminHomePage() {
-  const [stories, issues] = await Promise.all([
-    listAllStoriesAdmin(),
-    listAllIssuesAdmin(),
-  ]);
+  const { stories, issues } = await getAdminOverview();
 
   const pending = stories.filter((s) => s.status === "pending").length;
   const openIssues = issues.filter((i) => i.status !== "done").length;
@@ -23,7 +19,8 @@ export default async function AdminHomePage() {
         Panel
       </h1>
       <p style={{ marginBottom: 28, color: "rgba(33,29,22,0.65)" }}>
-        Na čekanju: {pending} priča · Otvorene prijave: {openIssues}
+        Na čekanju: {pending} priča · Otvorene prijave: {openIssues} ·{" "}
+        <Link href="/admin/sadrzaj">Uredi sadržaj lične karte →</Link>
       </p>
 
       <div className="grid-2">

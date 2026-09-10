@@ -4,12 +4,16 @@ export const authConfig = {
   pages: {
     signIn: "/prijava",
   },
-  session: { strategy: "jwt" },
+  session: {
+    strategy: "jwt",
+    // Shorter cookie work; role stays in JWT until re-login.
+    maxAge: 60 * 60 * 24 * 14,
+  },
   providers: [],
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
-        token.id = user.id;
+        token.id = user.id!;
         token.role = (user as { role?: "admin" | "member" }).role ?? "member";
       }
       return token;

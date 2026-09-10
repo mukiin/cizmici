@@ -1,8 +1,5 @@
-import {
-  listAllIssuesAdmin,
-  setIssueStatus,
-  setIssueVisibility,
-} from "@/lib/actions/content";
+import { listAllIssuesAdmin } from "@/lib/admin-queries";
+import { setIssueStatus, setIssueVisibility } from "@/lib/actions/content";
 
 export default async function AdminPrijavePage() {
   const issues = await listAllIssuesAdmin();

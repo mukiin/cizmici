@@ -1,9 +1,10 @@
 import Link from "next/link";
-import { site } from "@/lib/data";
+import { getSite } from "@/lib/data";
 import { daysUntil } from "@/lib/dates";
 import { getWeather } from "@/lib/weather";
 
 export async function LiveStrip() {
+  const site = await getSite();
   const weather = await getWeather(site.location.lat, site.location.lng);
   const days = daysUntil(site.danMz.month, site.danMz.day);
   const weatherText = weather
@@ -18,9 +19,7 @@ export async function LiveStrip() {
           {weatherText}
         </div>
         <div className="sep" />
-        <div className="item">
-          {days} dana do Dana MZ · 10. juli
-        </div>
+        <div className="item">{days} dana do Dana MZ · 10. juli</div>
         <div className="sep" />
         <Link href={site.live.lastNewsHref} className="item">
           Zadnje: „{site.live.lastNews}“

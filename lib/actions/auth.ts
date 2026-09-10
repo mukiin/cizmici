@@ -44,7 +44,8 @@ export async function registerMember(
     return { ok: false, error: "Nalog s ovim emailom već postoji." };
   }
 
-  const passwordHash = await hash(parsed.data.password, 12);
+  // cost 10 ≈ 4× brže od 12; i dalje dovoljno za ovaj sajt
+  const passwordHash = await hash(parsed.data.password, 10);
   await db.insert(users).values({
     name: parsed.data.name,
     email,

@@ -1,11 +1,16 @@
 "use server";
 
 import { and, desc, eq } from "drizzle-orm";
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 import { z } from "zod";
 import { requireAdmin, requireUser, type ActionState } from "@/lib/actions/auth";
 import { db } from "@/lib/db";
 import { issues, stories, users } from "@/lib/db/schema";
+
+function bustAdminCache() {
+  revalidateTag("admin-stories");
+  revalidateTag("admin-issues");
+}
 
 function slugify(input: string) {
   return input
@@ -79,6 +84,7 @@ export async function submitStory(
   revalidatePath("/price");
   revalidatePath("/admin");
   revalidatePath("/admin/price");
+  bustAdminCache();
 
   return {
     ok: true,
@@ -118,6 +124,7 @@ export async function submitIssue(
   revalidatePath("/prijave");
   revalidatePath("/admin");
   revalidatePath("/admin/prijave");
+  bustAdminCache();
 
   return { ok: true, message: "Prijava je poslana." };
 }
@@ -140,6 +147,7 @@ export async function setStoryStatus(formData: FormData): Promise<void> {
   revalidatePath("/admin");
   revalidatePath("/admin/price");
   revalidatePath("/price");
+  bustAdminCache();
 }
 
 export async function setIssueStatus(formData: FormData): Promise<void> {
@@ -159,6 +167,7 @@ export async function setIssueStatus(formData: FormData): Promise<void> {
   revalidatePath("/admin");
   revalidatePath("/admin/prijave");
   revalidatePath("/prijave");
+  bustAdminCache();
 }
 
 export async function setIssueVisibility(formData: FormData): Promise<void> {
@@ -178,6 +187,7 @@ export async function setIssueVisibility(formData: FormData): Promise<void> {
   revalidatePath("/admin");
   revalidatePath("/admin/prijave");
   revalidatePath("/prijave");
+  bustAdminCache();
 }
 
 export async function listPublishedStories() {
@@ -227,43 +237,5 @@ export async function listPublicIssues() {
     .from(issues)
     .innerJoin(users, eq(issues.authorId, users.id))
     .where(eq(issues.visibility, "public"))
-    .orderBy(desc(issues.createdAt));
-}
-
-export async function listAllStoriesAdmin() {
-  await requireAdmin();
-  return db
-    .select({
-      id: stories.id,
-      title: stories.title,
-      slug: stories.slug,
-      body: stories.body,
-      status: stories.status,
-      createdAt: stories.createdAt,
-      authorName: users.name,
-      authorEmail: users.email,
-    })
-    .from(stories)
-    .innerJoin(users, eq(stories.authorId, users.id))
-    .orderBy(desc(stories.createdAt));
-}
-
-export async function listAllIssuesAdmin() {
-  await requireAdmin();
-  return db
-    .select({
-      id: issues.id,
-      title: issues.title,
-      kind: issues.kind,
-      location: issues.location,
-      body: issues.body,
-      status: issues.status,
-      visibility: issues.visibility,
-      createdAt: issues.createdAt,
-      authorName: users.name,
-      authorEmail: users.email,
-    })
-    .from(issues)
-    .innerJoin(users, eq(issues.authorId, users.id))
     .orderBy(desc(issues.createdAt));
 }

@@ -2,6 +2,7 @@ import NextAuth from "next-auth";
 import { NextResponse } from "next/server";
 import { authConfig } from "@/auth.config";
 
+/** Edge-only config (no DB) — JWT decode for /admin. */
 const { auth } = NextAuth(authConfig);
 
 export default auth((req) => {
