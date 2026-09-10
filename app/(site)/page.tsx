@@ -50,6 +50,10 @@ export default async function HomePage() {
     <>
       <LiveStrip />
       <header className="hero">
+        <div className="hero-media" aria-hidden="true">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/hero/hero-cizmici.png" alt="" />
+        </div>
         <HeroContours />
         <div className="wrap hero-inner">
           <div className="eyebrow">

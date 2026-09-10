@@ -1,36 +1,38 @@
 ﻿# Stanje — Čizmići
 
-Ažurirano: 2026-09-10 22:15 (Europe/Sarajevo)
-Zadnji potez: Domen i emailovi prebačeni na **cizmici.net**.
+Ažurirano: 2026-09-10 22:25 (Europe/Sarajevo)
+Zadnji potez: Galerija (upload + WebP kompresija + autor na slici).
 
 Neslužbena digitalna lična karta **MZ Čizmići** (Grad Cazin, USK).
 
 ## Sada radi
 
-- Auth + Google; session sync.
-- Admin CMS + Korisnici.
-- Super-admin `cizmicm@cizmici.net` — uvijek admin, zaštićen.
-- Domen: **cizmici.net**
+- Auth + Google; CMS; korisnici; super-admin.
+- **Galerija** `/galerija` u headeru — samo prijavljeni dodaju, odmah javno, bez admin odobrenja.
+- Slike: sharp → WebP max 1280px, spremljene u `gallery_images` (base64), servirane preko `/api/galerija/[id]`.
+- Domen: cizmici.net
 
 ## Odluke
 
-- Super-admin u `lib/super-admin.ts`.
-- Javni domen / metadataBase / sitemap → cizmici.net
+- Galerija model A (ravna lista, bez albuma).
+- Autor se prikazuje uz svaku sliku; autor/admin može obrisati.
 
 ## Ne graditi još
 
 - Porodična stabla, email digest, oglasi/vaktija, dijaspora opt-in, žive ankete
+- Albumi/tagovi u galeriji (kasnije ako treba)
 
 ## Sljedeće
 
-- Commit + push.
+- Commit + push + deploy.
+- Žive ankete.
 
 ## Tehničko
 
-- Dev: `npm run dev` → :3005
-- Prijava vlasnika: `cizmicm@cizmici.net`
+- `npm run db:apply-gallery` → migracija 0003
+- Dev: :3005
 
 ## Changelog
 
-- 2026-09-10: cizmici.ba → cizmici.net (kod + DB).
-- 2026-09-10: Super-admin cizmicm; session sync; Google OAuth; CMS.
+- 2026-09-10: Galerija + gallery_images + sharp.
+- 2026-09-10: cizmici.net; super-admin; session sync; Google; CMS.

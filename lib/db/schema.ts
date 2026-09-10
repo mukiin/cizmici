@@ -332,3 +332,19 @@ export const pozdraviItems = pgTable("pozdravi_items", {
   text: text("text").notNull(),
   sortOrder: integer("sort_order").notNull().default(0),
 });
+
+/** Javna galerija — optimizirani WebP u bazi (bytea), odmah vidljivo. */
+export const galleryImages = pgTable("gallery_images", {
+  id: uuid("id").defaultRandom().primaryKey(),
+  authorId: uuid("author_id")
+    .notNull()
+    .references(() => users.id, { onDelete: "cascade" }),
+  caption: text("caption"),
+  mimeType: text("mime_type").notNull().default("image/webp"),
+  /** Optimizirani WebP (base64) — manji footprint uz neon-http. */
+  dataBase64: text("data_base64").notNull(),
+  width: integer("width").notNull(),
+  height: integer("height").notNull(),
+  bytes: integer("bytes").notNull(),
+  createdAt: timestamp("created_at", { mode: "date" }).defaultNow().notNull(),
+});
