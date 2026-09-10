@@ -103,6 +103,13 @@ export async function logoutMember() {
   await signOut({ redirectTo: "/" });
 }
 
+export async function loginWithGoogle(formData: FormData) {
+  const callbackUrl = String(formData.get("callbackUrl") || "/");
+  await signIn("google", {
+    redirectTo: callbackUrl.startsWith("/") ? callbackUrl : "/",
+  });
+}
+
 export async function requireUser() {
   const session = await auth();
   if (!session?.user?.id) {

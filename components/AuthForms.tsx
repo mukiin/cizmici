@@ -3,13 +3,20 @@
 import { useActionState } from "react";
 import {
   loginMember,
+  loginWithGoogle,
   registerMember,
   type ActionState,
 } from "@/lib/actions/auth";
 
 const initial: ActionState = { ok: false };
 
-export function AuthForms({ callbackUrl = "/" }: { callbackUrl?: string }) {
+export function AuthForms({
+  callbackUrl = "/",
+  googleEnabled = false,
+}: {
+  callbackUrl?: string;
+  googleEnabled?: boolean;
+}) {
   const [loginState, loginAction, loginPending] = useActionState(loginMember, initial);
   const [registerState, registerAction, registerPending] = useActionState(
     registerMember,
@@ -21,8 +28,31 @@ export function AuthForms({ callbackUrl = "/" }: { callbackUrl?: string }) {
       <div className="screen-card auth-box">
         <h2 style={{ fontSize: "1.3rem", marginBottom: 6 }}>Prijava</h2>
         <p style={{ fontSize: "0.86rem", color: "rgba(33,29,22,0.55)", marginBottom: 22 }}>
-          Prijavite se emailom i lozinkom. Google dolazi kasnije.
+          Email i lozinka{googleEnabled ? ", ili Google nalog" : ""}.
         </p>
+
+        {googleEnabled ? (
+          <form action={loginWithGoogle} style={{ marginBottom: 18 }}>
+            <input type="hidden" name="callbackUrl" value={callbackUrl} />
+            <button type="submit" className="btn ghost" style={{ width: "100%" }}>
+              Nastavi s Googleom
+            </button>
+          </form>
+        ) : null}
+
+        {googleEnabled ? (
+          <p
+            style={{
+              textAlign: "center",
+              fontSize: "0.8rem",
+              color: "rgba(33,29,22,0.45)",
+              marginBottom: 18,
+            }}
+          >
+            ili emailom
+          </p>
+        ) : null}
+
         <form action={loginAction}>
           <input type="hidden" name="callbackUrl" value={callbackUrl} />
           <div className="field">
@@ -50,7 +80,8 @@ export function AuthForms({ callbackUrl = "/" }: { callbackUrl?: string }) {
       <div className="screen-card auth-box">
         <h2 style={{ fontSize: "1.3rem", marginBottom: 6 }}>Registracija</h2>
         <p style={{ fontSize: "0.86rem", color: "rgba(33,29,22,0.55)", marginBottom: 22 }}>
-          Nalog mještanina za slanje priča i prijava problema.
+          Nalog mještanina za priče i prijave.
+          {googleEnabled ? " Brže: koristi Google lijevo." : ""}
         </p>
         <form action={registerAction}>
           <div className="field">

@@ -5,7 +5,13 @@ import { useSession } from "next-auth/react";
 import { AuthForms } from "@/components/AuthForms";
 import { logoutMember } from "@/lib/actions/auth";
 
-export function AuthPanel({ callbackUrl = "/" }: { callbackUrl?: string }) {
+export function AuthPanel({
+  callbackUrl = "/",
+  googleEnabled = false,
+}: {
+  callbackUrl?: string;
+  googleEnabled?: boolean;
+}) {
   const { data: session, status } = useSession();
 
   if (status === "loading") {
@@ -43,5 +49,5 @@ export function AuthPanel({ callbackUrl = "/" }: { callbackUrl?: string }) {
     );
   }
 
-  return <AuthForms callbackUrl={callbackUrl} />;
+  return <AuthForms callbackUrl={callbackUrl} googleEnabled={googleEnabled} />;
 }
