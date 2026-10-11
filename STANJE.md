@@ -1,7 +1,7 @@
 ﻿# Stanje — Čizmići
 
-Ažurirano: 2026-10-11 20:26 (Europe/Sarajevo)
-Zadnji potez: Commit + push na GitHub i deploy (forum, sadržaj, prazni biznisi).
+Ažurirano: 2026-10-11 20:33 (Europe/Sarajevo)
+Zadnji potez: Push `a3d9886` na GitHub i Vercel production.
 
 Neslužbena digitalna lična karta **MZ Čizmići** (Grad Cazin, USK).
 
@@ -12,7 +12,8 @@ Neslužbena digitalna lična karta **MZ Čizmići** (Grad Cazin, USK).
 - **Forum** `/forum` — teme, komentari, lajk/dislajk; admin briše teme i komentare.
 - Slike: sharp → WebP max 1280px, `gallery_images`, `/api/galerija/[id]`.
 - Lična karta: historija (1991–2023), popis 2013. sa svim starosnim skupinama, infra (Vignjevići, džamija 2006.), projekti iz akata. Biznisi prazni. Dijaspora bez izmišljenih brojki.
-- Domen: cizmici.net
+- Domen (sadržaj): cizmici.net
+- Produkcija: https://cizmici.vercel.app (Vercel `mukiin/cizmici`)
 - Lokalno: `http://localhost:3005`
 
 ## Odluke
@@ -49,6 +50,7 @@ Neslužbena digitalna lična karta **MZ Čizmići** (Grad Cazin, USK).
 
 ## Changelog
 
+- 2026-10-11: Push `a3d9886` + deploy https://cizmici.vercel.app. `cizmici.net` nije vezan na ovaj Vercel nalog.
 - 2026-10-11: Historija i ostali sadržaj iz javnih izvora; biznisi i izmišljene brojke dijaspore skinuti; Novosti odbačene.
 - 2026-10-11: Footer — bedževi izvora sivi na tamnoj podlozi.
 - 2026-10-11: Admin panel — `formatDate` prima string ili Date (Neon HTTP).
