@@ -1,6 +1,7 @@
 import {
   boolean,
   doublePrecision,
+  index,
   integer,
   jsonb,
   pgEnum,
@@ -9,6 +10,7 @@ import {
   real,
   text,
   timestamp,
+  uniqueIndex,
   uuid,
 } from "drizzle-orm/pg-core";
 import type { AdapterAccountType } from "next-auth/adapters";
@@ -348,3 +350,52 @@ export const galleryImages = pgTable("gallery_images", {
   bytes: integer("bytes").notNull(),
   createdAt: timestamp("created_at", { mode: "date" }).defaultNow().notNull(),
 });
+
+export const forumVoteTargetEnum = pgEnum("forum_vote_target", ["topic", "comment"]);
+
+export const forumTopics = pgTable(
+  "forum_topics",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    authorId: uuid("author_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    title: text("title").notNull(),
+    body: text("body").notNull(),
+    createdAt: timestamp("created_at", { mode: "date" }).defaultNow().notNull(),
+  },
+  (t) => [index("forum_topics_created_at_idx").on(t.createdAt)],
+);
+
+export const forumComments = pgTable(
+  "forum_comments",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    topicId: uuid("topic_id")
+      .notNull()
+      .references(() => forumTopics.id, { onDelete: "cascade" }),
+    authorId: uuid("author_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    body: text("body").notNull(),
+    createdAt: timestamp("created_at", { mode: "date" }).defaultNow().notNull(),
+  },
+  (t) => [index("forum_comments_topic_id_idx").on(t.topicId)],
+);
+
+export const forumVotes = pgTable(
+  "forum_votes",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    userId: uuid("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    targetType: forumVoteTargetEnum("target_type").notNull(),
+    targetId: uuid("target_id").notNull(),
+    value: integer("value").notNull(),
+  },
+  (t) => [
+    uniqueIndex("forum_votes_user_target_idx").on(t.userId, t.targetType, t.targetId),
+    index("forum_votes_target_idx").on(t.targetType, t.targetId),
+  ],
+);

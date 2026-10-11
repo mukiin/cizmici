@@ -1,5 +1,6 @@
 import { listAllIssuesAdmin } from "@/lib/admin-queries";
 import { setIssueStatus, setIssueVisibility } from "@/lib/actions/content";
+import { formatDateTime } from "@/lib/dates";
 
 export default async function AdminPrijavePage() {
   const issues = await listAllIssuesAdmin();
@@ -19,7 +20,7 @@ export default async function AdminPrijavePage() {
             <h2 style={{ fontSize: "1.15rem" }}>{issue.title}</h2>
             <div className="meta" style={{ marginBottom: 8 }}>
               {issue.authorName} ({issue.authorEmail}) · {issue.kind} · {issue.status} ·{" "}
-              {issue.visibility} · {issue.createdAt.toLocaleString("bs-BA")}
+              {issue.visibility} · {formatDateTime(issue.createdAt)}
             </div>
             <p style={{ whiteSpace: "pre-wrap", marginBottom: 10 }}>{issue.body}</p>
             <div style={{ display: "flex", gap: 8, flexWrap: "wrap", alignItems: "center" }}>

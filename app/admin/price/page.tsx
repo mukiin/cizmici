@@ -1,5 +1,6 @@
 import { listAllStoriesAdmin } from "@/lib/admin-queries";
 import { setStoryStatus } from "@/lib/actions/content";
+import { formatDateTime } from "@/lib/dates";
 
 export default async function AdminPricePage() {
   const stories = await listAllStoriesAdmin();
@@ -19,7 +20,7 @@ export default async function AdminPricePage() {
             <h2 style={{ fontSize: "1.15rem" }}>{story.title}</h2>
             <div className="meta" style={{ marginBottom: 8 }}>
               {story.authorName} ({story.authorEmail}) · {story.status} ·{" "}
-              {story.createdAt.toLocaleString("bs-BA")}
+              {formatDateTime(story.createdAt)}
             </div>
             <p style={{ whiteSpace: "pre-wrap", marginBottom: 10 }}>{story.body}</p>
             <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>

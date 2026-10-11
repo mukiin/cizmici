@@ -4,6 +4,7 @@ import { auth } from "@/auth";
 import { PageBand } from "@/components/PageBand";
 import { StorySubmitForm } from "@/components/StorySubmitForm";
 import { listPublishedStories } from "@/lib/actions/content";
+import { formatDate } from "@/lib/dates";
 
 export const metadata: Metadata = { title: "Priče" };
 
@@ -42,7 +43,7 @@ export default async function PricePage() {
                     </p>
                     <div className="meta" style={{ marginTop: 10 }}>
                       {s.authorName}
-                      {s.publishedAt ? ` · ${s.publishedAt.toLocaleDateString("bs-BA")}` : null}
+                      {s.publishedAt ? ` · ${formatDate(s.publishedAt)}` : null}
                     </div>
                   </div>
                 </Link>

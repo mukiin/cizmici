@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getAdminOverview } from "@/lib/admin-queries";
+import { formatDate } from "@/lib/dates";
 import {
   setIssueStatus,
   setIssueVisibility,
@@ -41,7 +42,7 @@ export default async function AdminHomePage() {
             >
               <strong>{story.title}</strong>
               <div className="meta">
-                {story.authorName} · {story.status} · {story.createdAt.toLocaleDateString("bs-BA")}
+                {story.authorName} · {story.status} · {formatDate(story.createdAt)}
               </div>
               {story.status === "pending" ? (
                 <div style={{ display: "flex", gap: 8, marginTop: 8 }}>
@@ -82,7 +83,7 @@ export default async function AdminHomePage() {
               <strong>{issue.title}</strong>
               <div className="meta">
                 {issue.authorName} · {issue.status} · {issue.visibility} ·{" "}
-                {issue.createdAt.toLocaleDateString("bs-BA")}
+                {formatDate(issue.createdAt)}
               </div>
               <div style={{ display: "flex", gap: 8, marginTop: 8, flexWrap: "wrap" }}>
                 <form action={setIssueStatus} style={{ display: "flex", gap: 8, alignItems: "center" }}>

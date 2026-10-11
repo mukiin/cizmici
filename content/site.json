@@ -19,16 +19,16 @@
     { "value": "10. jul", "label": "Dan MZ · osn. 2011." }
   ],
   "live": {
-    "lastNews": "Nova firma sa vlasničkom vezom prema Austriji",
-    "lastNewsHref": "/#historija"
+    "lastNews": "Javni interes za put „Čizmići“ (Sl. novine 8/23)",
+    "lastNewsHref": "/historija/2023-put-cizmici"
   },
   "sources": [
     "Akti Grada Cazina",
     "Popis stanovništva BiH 2013.",
-    "Wikipedia — Čizmići",
-    "Javni poslovni registar"
+    "statistika.ba / citypopulation.de",
+    "Cazin.NET · JKP Vodovod Cazin"
   ],
-  "disclaimer": "Neslužbena digitalna lična karta mjesne zajednice Čizmići, Grad Cazin. Podaci prikupljeni iz javno dostupnih zvaničnih akata Grada Cazina, popisa stanovništva 2013. i javnih poslovnih registara.",
+  "disclaimer": "Neslužbena digitalna lična karta mjesne zajednice Čizmići, Grad Cazin. Podaci iz javno dostupnih akata Grada Cazina, popisa 2013. i označenih javnih izvora. Registrovane firme iz pretrage nisu navedene.",
   "roadmap": [
     {
       "num": "01",

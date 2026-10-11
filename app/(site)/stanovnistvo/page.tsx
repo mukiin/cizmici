@@ -22,7 +22,7 @@ export default async function StanovnistvoPage() {
           </p>
           <div className="demo-grid">
             <div className="demo-panel">
-              <h3>Starosna struktura (odabrane skupine)</h3>
+              <h3>Starosna struktura (popis 2013.)</h3>
               <AgeBars groups={demografija.ageGroups} />
               <div className="bignum-row">
                 <div className="bignum">

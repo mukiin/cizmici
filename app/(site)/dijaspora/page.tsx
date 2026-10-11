@@ -21,10 +21,22 @@ export default async function DijasporaPage() {
           <MockNote>{dijaspora.note}</MockNote>
           <div className="total-banner">
             <div>
-              <div className="n">{dijaspora.total}</div>
-              <div className="l">
-                Čizmićana povezano iz {dijaspora.countriesCount} zemalja — ilustracija
-              </div>
+              {dijaspora.total > 0 ? (
+                <>
+                  <div className="n">{dijaspora.total}</div>
+                  <div className="l">
+                    Čizmićana povezano iz {dijaspora.countriesCount} zemalja
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div className="n">—</div>
+                  <div className="l">
+                    Nema zvaničnog broja. Koridori koji se javno spominju:{" "}
+                    {dijaspora.countries.map((c) => c.name).join(", ")}.
+                  </div>
+                </>
+              )}
             </div>
             <button type="button" className="ghost-btn" disabled>
               + Označi svoju lokaciju
@@ -35,7 +47,7 @@ export default async function DijasporaPage() {
             {dijaspora.countries.map((c) => (
               <div className="dstat" key={c.name}>
                 <div className="flag">{c.flag}</div>
-                <div className="n">{c.count}</div>
+                <div className="n">{c.count > 0 ? c.count : "—"}</div>
                 <div className="l">{c.name}</div>
               </div>
             ))}

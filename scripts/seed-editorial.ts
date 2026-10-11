@@ -290,16 +290,18 @@ async function main() {
     })),
   );
 
-  await db.insert(schema.businesses).values(
-    biznisi.map((b, i) => ({
-      tag: b.tag,
-      name: b.name,
-      body: b.body,
-      founded: b.founded,
-      location: b.location,
-      sortOrder: i,
-    })),
-  );
+  if (biznisi.length > 0) {
+    await db.insert(schema.businesses).values(
+      biznisi.map((b, i) => ({
+        tag: b.tag,
+        name: b.name,
+        body: b.body,
+        founded: b.founded,
+        location: b.location,
+        sortOrder: i,
+      })),
+    );
+  }
 
   await db.insert(schema.events).values(
     dogadjaji.map((e, i) => ({

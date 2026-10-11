@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { auth } from "@/auth";
 import { listUsersAdmin, setUserRole } from "@/lib/actions/users";
+import { formatDate } from "@/lib/dates";
 import { isSuperAdminEmail } from "@/lib/super-admin";
 
 export default async function AdminKorisniciPage() {
@@ -43,7 +44,7 @@ export default async function AdminKorisniciPage() {
                 {u.id === meId ? " (ti)" : ""}
                 {locked ? " · vlasnik" : ""}
                 <div className="meta">
-                  {u.email} · {u.role} · {u.createdAt.toLocaleDateString("bs-BA")}
+                  {u.email} · {u.role} · {formatDate(u.createdAt)}
                 </div>
               </div>
               <div style={{ display: "flex", gap: 8 }}>

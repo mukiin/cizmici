@@ -29,6 +29,13 @@
       "when": 1789068000000,
       "tag": "0003_gallery_images",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1789137000000,
+      "tag": "0004_forum",
+      "breakpoints": true
     }
   ]
 }

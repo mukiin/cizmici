@@ -13,6 +13,8 @@
     "db:seed-admin": "tsx scripts/seed-admin.ts",
     "db:seed-super-admin": "tsx scripts/seed-super-admin.ts",
     "db:apply-gallery": "tsx scripts/apply-0003.ts",
+    "db:apply-forum": "tsx scripts/apply-0004.ts",
+    "db:seed-forum": "tsx scripts/seed-forum.ts",
     "db:seed-cms": "tsx scripts/seed-cms.ts",
     "db:seed-editorial": "tsx scripts/seed-editorial.ts"
   },

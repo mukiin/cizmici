@@ -9,7 +9,7 @@ function pin(n: number, color: string) {
   const size = 14 + Math.min(n / 4, 26);
   return L.divIcon({
     className: "",
-    html: `<div style="width:${size}px;height:${size}px;border-radius:50%;background:${color};opacity:0.85;border:2px solid white;box-shadow:0 1px 4px rgba(0,0,0,0.35);display:flex;align-items:center;justify-content:center;color:white;font-family:IBM Plex Mono,monospace;font-size:10px;">${n}</div>`,
+    html: `<div style="width:${size}px;height:${size}px;border-radius:50%;background:${color};opacity:0.85;border:2px solid white;box-shadow:0 1px 4px rgba(0,0,0,0.35);display:flex;align-items:center;justify-content:center;color:white;font-family:IBM Plex Mono,monospace;font-size:10px;">${n > 0 ? n : ""}</div>`,
     iconSize: [size, size],
     iconAnchor: [size / 2, size / 2],
   });
@@ -38,7 +38,7 @@ export default function DiasporaMap({ data }: { data: Diaspora }) {
           <Popup>
             <b>{c.name}</b>
             <br />
-            {c.count} povezanih (ilustracija)
+            {c.count > 0 ? `${c.count} povezanih` : "Koridor — broj nije poznat"}
           </Popup>
         </Marker>
       ))}

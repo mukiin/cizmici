@@ -31,13 +31,13 @@
       "detail": [
         "Najduži lokalni pravac u evidenciji MZ poslije Čizmići–Kapići: 1,20 km, od raskrsnice u Čizmićima prema Donjim Halkićima.",
         "Halkići (Donji i Gornji) se ne pojavljuju kao naseljeno mjesto u popisu ni u registru naselja Grada Cazina. Ime je zaseok / porodični toponim unutar MZ.",
-        "Naselje Slatina leži istočno od Čizmića i u javnim izvorima se spominje u istom širem pojasu; to nije potvrda da ovaj pravac završava u Slatini, nego orijentir u prostoru."
+        "15. 6. 2020. potpisan je ugovor za rekonstrukciju puta Donji Halkići u MZ Čizmići, 36.629 KM (macanovici.net). Tekst kaže da radovi treba da počnu tih dana; zapisnik o primopredaji ovdje nije priložen."
       ],
       "facts": [
         { "label": "Evidencija", "value": "MZ Čizmići, 2021." },
         { "label": "Dužina", "value": "1,20 km" },
         { "label": "Od / do", "value": "Raskrsnica Čizmići → Donji Halkići" },
-        { "label": "Nadležnost", "value": "Mjesna zajednica Čizmići" }
+        { "label": "Ugovor 2020.", "value": "36.629 KM (javni izvor)" }
       ]
     },
     {
@@ -106,13 +106,13 @@
       "detail": [
         "Pravac 0,70 km koji u evidenciji spaja zaseoke Muranovići i Gornji Halkići preko Čizmića.",
         "Nijedan krajnji toponim nije samostalno naseljeno mjesto u popisu ni u listi naselja Grada Cazina. To su unutrašnji zaseoci MZ.",
-        "Čizmići su sredina imenovanog pravca: put ide kroz središte mjesne zajednice, ne kao veza dva susjedna sela."
+        "16. 2. 2016. Grad Cazin objavljuje pripremu asfaltiranja Čizmići–Gornji Halkići: 460 m, oko 100.000 KM, pola mještani / pola općina. Početak najavljen za proljeće; završetak ovdje nije potvrđen."
       ],
       "facts": [
         { "label": "Evidencija", "value": "MZ Čizmići, 2021." },
         { "label": "Dužina", "value": "0,70 km" },
         { "label": "Od / do", "value": "Muranovići → Čizmići → Gornji Halkići" },
-        { "label": "Nadležnost", "value": "Mjesna zajednica Čizmići" }
+        { "label": "Najava 2016.", "value": "460 m · ~100.000 KM (gradcazin.gov.ba)" }
       ]
     },
     {
@@ -198,13 +198,13 @@
       "chip": "🛣️ Asfaltirane ceste",
       "kind": "network",
       "detail": [
-        "U opisu infrastrukture MZ navedene su asfaltirane ceste, uz vodovod, struju, rasvjetu i telefon.",
-        "Akt iz 2021. daje dužine 10 pravaca (ukupno 4,35 km), ne i podlogu (asfalt ili makadam) po stavci. Zato ovdje stoji da asfalt postoji u MZ, bez tvrdnje koji je od deset pravaca asfaltiran."
+        "U opisu infrastrukture MZ navedene su asfaltirane ceste, uz vodovod, struju, rasvjetu i telefon. Cazin.NET (29. 9. 2019.) isto navodi asfalt, gradski vodovod, telefon, struju i uličnu rasvjetu.",
+        "Akt iz 2021. daje dužine 10 pravaca (ukupno 4,35 km), ne i podlogu po stavci. Zato ovdje stoji da asfalt postoji u MZ, bez tvrdnje koji je od deset pravaca asfaltiran."
       ],
       "facts": [
         { "label": "Broj pravaca", "value": "10" },
         { "label": "Ukupna dužina", "value": "4,35 km" },
-        { "label": "Izvor", "value": "Evidencija MZ, 2021." }
+        { "label": "Izvor", "value": "Evidencija MZ 2021. · Cazin.NET 2019." }
       ]
     },
     {
@@ -213,13 +213,13 @@
       "chip": "💧 Gradski vodovod",
       "kind": "network",
       "detail": [
-        "MZ Čizmići je u javnim opisima navedena kao pokrivena gradskim vodovodom Cazina.",
-        "Nema javnog popisa priključaka ni trase cijevi. Ovdje stoji činjenica priključenosti, bez hidrotehničkog plana."
+        "JKP Vodovod Cazin vodi Čizmiće i MZ Slatina na sistemu Vignjevići, koji opskrbljuje i sam grad Cazin. Na tom podsistemu je 6.869 potrošača i oko 200 km mreže — to je cijeli Vignjevići, ne samo Čizmići.",
+        "Nema javnog popisa priključaka ni trase cijevi unutar MZ. Ovdje stoji priključenost na taj sistem, bez hidrotehničkog plana."
       ],
       "facts": [
         { "label": "Tip", "value": "Gradski vodovod" },
-        { "label": "Obuhvat", "value": "MZ Čizmići (javni opis)" },
-        { "label": "Izvor", "value": "Javni opis infrastrukture MZ" }
+        { "label": "Sistem", "value": "Vignjevići (JKP Vodovod Cazin)" },
+        { "label": "Podsistem", "value": "6.869 potrošača · ~200 km (cijeli sistem)" }
       ]
     },
     {
@@ -256,12 +256,13 @@
       "chip": "☎️ Telefonska infrastruktura",
       "kind": "network",
       "detail": [
-        "Telefonska infrastruktura navedena je u opisu opremljenosti MZ.",
+        "Telefonska infrastruktura navedena je u opisu opremljenosti MZ (Cazin.NET 2019.). Pozivni broj područja je +387 37; poštanski broj za Cazin i većinu okolnih naselja je 77220.",
         "Operatori ne objavljuju kućne priključke. Ovdje stoji da mreža postoji, bez trase kabla."
       ],
       "facts": [
         { "label": "Tip", "value": "Telefonska infrastruktura" },
-        { "label": "Obuhvat", "value": "MZ Čizmići (javni opis)" }
+        { "label": "Pozivni broj", "value": "+387 37" },
+        { "label": "Pošta", "value": "77220 (šire Cazin)" }
       ]
     },
     {
@@ -270,13 +271,13 @@
       "chip": "🕌 Džamija i Društveni dom",
       "kind": "object",
       "detail": [
-        "Džamija i Društveni dom su središnji javni objekti MZ. Džemat je formiran 1998.; Dom je u Budžetu Grada Cazina 2023. predviđen za rekonstrukciju.",
-        "Džemat obuhvata Čizmiće, Hašiće i Gradinu. Sportsko igralište je zaseban objekat (izgrađeno 2017., 36×18 m) i vodi se na opštoj mapi mjesta, ne u ovoj stavci."
+        "Džamija je svečano otvorena 6. 8. 2006. (hu. Wikipedia / Facebook džemata). Džemat je formiran 1998. Džemat obuhvata Čizmiće, Hašiće i Gradinu; imam od osnivanja, prema javnom opisu: Ernad Osmanagić ef.",
+        "Društveni dom je u Budžetu Grada Cazina 2023. predviđen za rekonstrukciju; javni portal nabavki bilježi tender za sanaciju. Sportsko igralište je zaseban objekat (2017., 36×18 m)."
       ],
       "facts": [
         { "label": "Džemat", "value": "Formiran 1998." },
-        { "label": "Dom", "value": "Rekonstrukcija u budžetu Grada, 2023." },
-        { "label": "Tip", "value": "Javni objekti MZ" }
+        { "label": "Džamija", "value": "Otvorena 6. 8. 2006." },
+        { "label": "Dom", "value": "Rekonstrukcija u budžetu Grada, 2023." }
       ]
     }
   ]

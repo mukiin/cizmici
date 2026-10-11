@@ -4,6 +4,7 @@ import { auth } from "@/auth";
 import { IssueSubmitForm } from "@/components/IssueSubmitForm";
 import { PageBand } from "@/components/PageBand";
 import { listPublicIssues } from "@/lib/actions/content";
+import { formatDate } from "@/lib/dates";
 
 export const metadata: Metadata = { title: "Prijave" };
 
@@ -46,7 +47,7 @@ export default async function PrijavePage() {
                     <div style={{ flex: 1 }}>
                       <h4>{item.title}</h4>
                       <div className="meta">
-                        {item.authorName} · {item.createdAt.toLocaleDateString("bs-BA")} ·{" "}
+                        {item.authorName} · {formatDate(item.createdAt)} ·{" "}
                         {statusLabel[item.status] ?? item.status}
                       </div>
                       <p style={{ marginTop: 6, fontSize: "0.9rem" }}>{item.body}</p>

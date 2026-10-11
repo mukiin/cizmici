@@ -4,6 +4,7 @@ export const navLinks = [
   { href: "/#infrastruktura", label: "Infrastruktura" },
   { href: "/#mapa", label: "Mapa" },
   { href: "/galerija", label: "Galerija" },
+  { href: "/forum", label: "Forum" },
   { href: "/#projekti", label: "Projekti" },
   { href: "/#biznisi", label: "Biznisi" },
   { href: "/#price", label: "Priče" },
@@ -14,6 +15,7 @@ export const navLinks = [
 
 export const footerLinks = [
   { href: "/galerija", label: "Galerija" },
+  { href: "/forum", label: "Forum" },
   { href: "/pozdravi", label: "Pozdravi" },
   { href: "/prijave", label: "Prijave" },
   { href: "/ankete", label: "Ankete" },
@@ -27,6 +29,7 @@ export const allRoutes = [
   "/infrastruktura",
   "/mapa",
   "/galerija",
+  "/forum",
   "/projekti",
   "/biznisi",
   "/price",

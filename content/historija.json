@@ -1,5 +1,18 @@
 [
   {
+    "slug": "1991-naselje",
+    "year": "1991",
+    "title": "Čizmići kao samostalno naseljeno mjesto",
+    "body": "Prvi put se vode zasebno na popisu, izdvojeni iz naseljenog mjesta Slatina. Popis: 761 stanovnik.",
+    "source": "official",
+    "featured": true,
+    "detail": [
+      "Kao samostalno naseljeno mjesto Čizmići postoje od popisa 1991. Izdvojeno je iz naseljenog mjesta Slatina (promjene u sastavu naselja 1948–1990; hr. Wikipedia / Državni zavod za statistiku RBiH, 1993).",
+      "Popis 31. 3. 1991.: 761 stanovnik — Muslimani 751, Srbi 1, Hrvati 0, Jugoslaveni 7, ostali 2 (statistika.ba, šifra naselja 109495).",
+      "Katastar i dalje vodi parcele u k.o. Slatina (Službene novine Grada Cazina 8/23). Zato se adrese i posjedi i danas miješaju: Čizmići i Slatina."
+    ]
+  },
+  {
     "slug": "1998-dzemat-cizmici",
     "year": "1998",
     "title": "Formiran džemat Čizmići",
@@ -7,9 +20,22 @@
     "source": "public",
     "featured": true,
     "detail": [
-      "Godine 1998. formiran je džemat Čizmići, izdvojen iz džemata Slatina rješenjem Rijaseta Islamske zajednice. To je vjerska, a ne općinska organizacija — mjesna zajednica kao administrativna jedinica Grada Cazina upisana je tek 2011.",
-      "Prema javno dostupnim izvorima, džemat obuhvata Čizmiće, Hašiće i Gradinu. Ta granica se djelomično poklapa s kasnijom MZ, ali nije ista: MZ iz 2011. u registru navodi Čizmiće, Gradinu i Hadžaliće.",
-      "Ova stranica će se dopunjavati kako se pronađu dodatni javni dokumenti (npr. tačan datum rješenja, imamski kadar, izgradnja džamije). Ako imaš izvor, može se dodati uz navođenje."
+      "Godine 1998. formiran je džemat Čizmići, izdvojen iz džemata Slatina rješenjem Rijaseta Islamske zajednice (Cazin.NET, 29. 9. 2019). To je vjerska, a ne općinska organizacija — mjesna zajednica kao administrativna jedinica Grada Cazina upisana je 2011.",
+      "Prema istom javnom opisu, džemat obuhvata Čizmiće, Hašiće i Gradinu. Ta granica se djelomično poklapa s kasnijom MZ, ali nije ista: MZ iz 2011. u registru navodi Čizmiće, Gradinu i Hadžaliće.",
+      "Mađarska Wikipedia (2024), uz Facebook stranicu džemata, navodi 166 džematskih kućanstava i imama Ernada Osmanagića ef. od osnivanja. To nije popis stanovništva."
+    ]
+  },
+  {
+    "slug": "2006-dzamija",
+    "year": "2006",
+    "title": "Otvorena džamija u Čizmićima",
+    "body": "Svečano otvorenje 6. augusta 2006. Džamija je središnji objekat džemata formiranog 1998.",
+    "source": "public",
+    "featured": true,
+    "detail": [
+      "Džamija u Čizmićima svečano je otvorena 6. 8. 2006. (hu. Wikipedia, uz Facebook „Islamska omladina — Čizmići — Cazin“).",
+      "Cazin.NET 2019. džamiju navodi kao novosagrađeni objekat uz Društveni dom. Tačan akt o izgradnji (dozvola, iznos) ovdje još nije priložen.",
+      "Imam džemata od osnivanja, prema istom javnom opisu: Ernad Osmanagić ef."
     ]
   },
   {
@@ -26,6 +52,19 @@
     ]
   },
   {
+    "slug": "2016-gornji-halkici",
+    "year": "2016",
+    "title": "Asfalt Čizmići–Gornji Halkići (najava)",
+    "body": "Dionica 460 m, oko 100.000 KM; pola mještani, pola općina preko Komunalno-stambenog fonda. Radovi najavljeni za proljeće 2016.",
+    "source": "official",
+    "featured": true,
+    "detail": [
+      "16. 2. 2016. Grad Cazin objavljuje obilazak pripreme asfaltiranja lokalnog puta Čizmići–Gornji Halkići (gradcazin.gov.ba).",
+      "Predsjednik građevinskog odbora Šefik Čizmić: dionica 460 metara, oko 100 hiljada maraka, pola mještani / pola općina preko Komunalno-stambenog fonda, početak na proljeće. Predsjednik MZ Salih Mujadžić: put je u Planu rada Savjeta MZ za tu godinu. Načelnik tada: mr. Nermin Ogrešević.",
+      "Akt najavljuje radove; javni tekst ne zatvara datum završetka. Zato ovdje stoji kao najava, ne kao potvrđen završetak."
+    ]
+  },
+  {
     "slug": "2017-sportsko-igraliste",
     "year": "2017",
     "title": "Izgradnja sportskog igrališta",
@@ -35,7 +74,7 @@
     "detail": [
       "2017. sklopljen je ugovor za izgradnju sportskog igrališta u centru Čizmića. Teren dimenzija 36 × 18 m predviđen je za mali nogomet, rukomet i košarku.",
       "Vrijednost radova prema aktu iznosi 58.537 KM. Zemljište je donirao tadašnji predsjednik MZ Salih Mujadžić.",
-      "Igralište je danas jedna od rijetkih javnih tačaka na mapi mjesta. Na ovoj stranici kasnije mogu stati fotografije, godine rekonstrukcija i raspored turnira — kad se prikupi izvor."
+      "Cazin.NET 2019. igralište navodi kao postojeću sportsku infrastrukturu MZ."
     ]
   },
   {
@@ -48,7 +87,7 @@
     "detail": [
       "2019. Grad Cazin donosi odluku o utvrđivanju javnog interesa radi rekonstrukcije putnog pravca Gradina – Elazovo brdo.",
       "Put je jedan od deset lokalnih pravaca u nadležnosti MZ (u evidenciji iz 2021. označen dužinom 0,20 km). Odluka o javnom interesu obično prethodi eksproprijaciji ili rekonstrukciji.",
-      "Status na platformi za sada stoji kao „u realizaciji“, jer javno dostupni akti ne zatvaraju da je rad u potpunosti završen. Kad se pojavi novi akt, ovdje ide datum i iznos."
+      "Status na platformi za sada stoji kao „u realizaciji“, jer javno dostupni akti ne zatvaraju da je rad u potpunosti završen."
     ]
   },
   {
@@ -60,8 +99,21 @@
     "featured": false,
     "detail": [
       "2020. finansijsko poslovanje mjesnih zajednica u Cazinu, uključujući Čizmiće, prelazi u jedinstveni trezor Grada.",
-      "To znači da MZ više nema zaseban transakcijski račun: projekti i tekući troškovi idu kroz gradski budžet i evidenciju. Zato se investicije (igralište, putevi, Dom) u izvorima pojavljuju kao stavke Grada Cazina, a ne kao samostalni račun MZ.",
+      "To znači da MZ više nema zaseban transakcijski račun: projekti i tekući troškovi idu kroz gradski budžet i evidenciju.",
       "Za stanovnike je bitno: prijava problema i zahtjevi za infrastrukturu i dalje mogu ići preko Savjeta MZ, ali novac formalno vodi Grad."
+    ]
+  },
+  {
+    "slug": "2020-donji-halkici",
+    "year": "2020",
+    "title": "Ugovor: rekonstrukcija puta Donji Halkići",
+    "body": "15. juna 2020. potpisan ugovor za rekonstrukciju puta Donji Halkići u MZ Čizmići, 36.629 KM.",
+    "source": "public",
+    "featured": false,
+    "detail": [
+      "15. 6. 2020. potpisani su ugovori za rekonstrukciju lokalnih puteva u MZ Čizmići, Skokovi, Pećigrad i Stijena, ukupno 407.114 KM (macanovici.net).",
+      "Stavka za MZ Čizmići: rekonstrukcija puta Donji Halkići, 36.629 KM. Tekst kaže da radovi treba da počnu tih dana.",
+      "Javni izvor ne donosi zapisnik o primopredaji. Ovdje stoji ugovor, ne potvrđen završetak."
     ]
   },
   {
@@ -72,9 +124,9 @@
     "source": "official",
     "featured": true,
     "detail": [
-      "2021. za rekonstrukciju putnog pravca Kapići – Čizmići opredijeljeno je 123.510,02 KM namjenskih sredstava Federacije BiH. U evidenciji MZ taj pravac je najduži lokalni put (1,10 km).",
-      "Istovremeno je za put Trišnjar pokrenut postupak eksproprijacije zemljišta — rekonstrukcija je zahtijevala rješavanje imovinsko-pravnih odnosa, ne samo asfalt.",
-      "Oba pravca ostaju u listi infrastrukture na ovoj platformi. Detalji ugovora, izvođača i datuma završetka dodaju se kad se pronađu u aktima Grada."
+      "2021. za rekonstrukciju putnog pravca Kapići – Čizmići opredijeljeno je 123.510,02 KM namjenskih sredstava Federacije BiH. U evidenciji MZ taj pravac je 1,10 km.",
+      "Istovremeno je za put Trišnjar pokrenut postupak eksproprijacije zemljišta.",
+      "Detalji ugovora, izvođača i datuma završetka dodaju se kad se pronađu u aktima Grada."
     ]
   },
   {
@@ -85,22 +137,22 @@
     "source": "official",
     "featured": false,
     "detail": [
-      "Gradska evidencija 2023. bilježi 163 stambene jedinice u Čizmićima, u odnosu na 162 prethodne godine. Broj je evidencija stanova, ne nužno novi popis stanovništva (posljednji zvanični popis za naselje i dalje je 2013. — 851 stanovnik).",
-      "U Budžetu Grada Cazina za istu godinu predviđena je rekonstrukcija prostorija Društvenog doma, multifunkcionalnog prostora MZ.",
-      "Dom je na mapi označen okvirno; tačna adresa, fotografije prije/poslije i iznos stavke mogu se dopuniti iz budžetskog dokumenta kad bude priložen kao izvor."
+      "Gradska evidencija 2023. bilježi 163 stambene jedinice u Čizmićima, u odnosu na 162 prethodne godine. Broj je evidencija stanova, ne novi popis (posljednji zvanični popis naselja i dalje je 2013. — 851 stanovnik).",
+      "U Budžetu Grada Cazina za istu godinu predviđena je rekonstrukcija prostorija Društvenog doma.",
+      "Javni portal nabavki bilježi i tender za sanaciju objekta Društvenog doma MZ Čizmići (naručilac Općina/Grad Cazin)."
     ]
   },
   {
-    "slug": "2025-firma-dijaspora",
-    "year": "2025",
-    "title": "Nova firma sa vlasničkom vezom prema Austriji",
-    "body": "Registrovano privredno društvo u Čizmićima sa suvlasništvom austrijske kompanije — signal povezanosti sa dijasporom.",
-    "source": "public",
-    "featured": true,
+    "slug": "2023-put-cizmici",
+    "year": "2023",
+    "title": "Javni interes za nerazvrstani put „Čizmići“",
+    "body": "Službene novine Grada Cazina 8/23: utvrđen javni interes i eksproprijacija za rekonstrukciju puta „Čizmići“ u MZ Čizmići.",
+    "source": "official",
+    "featured": false,
     "detail": [
-      "2025. u javnom poslovnom registru pojavljuje se privredno društvo sa adresom u Čizmićima čija vlasnička struktura uključuje lokalnog partnera i kompaniju iz Austrije.",
-      "To nije „statistika dijaspore“, nego konkretan trag da se kapital i ljudi iz govornog područja DE/AT/CH i dalje vežu za mjesto. Na platformi stoji u sekciji biznisa, uz Auto otpad Čizmić (2015.) i Auto servis Čizmić (2016.).",
-      "Pun naziv, MBS i djelatnost mogu se dopuniti iz registra kad se unos provjeri; ovdje namjerno ostaje kratak opis dok je izvor opći poslovni registar, ne marketinški tekst firme."
+      "Prijedlog JU Komunalno-stambeni fond Cazin podnesen 29. 5. 2023. (broj 05-27-2271/23). Korisnik potpune eksproprijacije je isti fond.",
+      "Uz odluku stoji urbanistička saglasnost 04-19-428/22 od 17. 10. 2022. i geodetski elaborat. Parcele su u k.o. Slatina; uz trasu se u aktu javljaju toponimi Hrnčića put, Turba, Kućište, Bašča, Strana, Ograda, Voće.",
+      "Odluka utvrđuje javni interes; imovinsko-pravni odnosi idu u poseban postupak. To nije potvrda da je asfalt položen."
     ]
   }
 ]

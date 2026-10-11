@@ -109,7 +109,7 @@ export default async function HomePage() {
           </div>
           <div className="demo-grid">
             <div className="demo-panel">
-              <h3>Starosna struktura (odabrane skupine)</h3>
+              <h3>Starosna struktura (popis 2013.)</h3>
               <AgeBars groups={demografija.ageGroups} />
               <div className="bignum-row">
                 <div className="bignum">
@@ -232,20 +232,25 @@ export default async function HomePage() {
               <h2>Naši biznisi</h2>
             </div>
             <div className="sub">
-              Javno registrovana privredna društva i obrti sa adresom u Čizmićima.{" "}
-              <SourceBadge kind="public" label="poslovni registar" />
+              Lokalna privreda — unosi se kad ima pouzdan izvor. Registrovane firme iz pretrage ovdje nisu navedene.
             </div>
           </div>
-          <div className="biz-grid">
-            {biznisi.map((b) => (
-              <div className="biz-card" key={b.name}>
-                <span className="tag">{b.tag}</span>
-                <h3>{b.name}</h3>
-                <p>{b.body}</p>
-                <div className="founded">{b.founded}</div>
-              </div>
-            ))}
-          </div>
+          {biznisi.length === 0 ? (
+            <p style={{ fontSize: "0.95rem", color: "rgba(33,29,22,0.62)" }}>
+              Još nema unesenih biznisa.
+            </p>
+          ) : (
+            <div className="biz-grid">
+              {biznisi.map((b) => (
+                <div className="biz-card" key={b.name}>
+                  <span className="tag">{b.tag}</span>
+                  <h3>{b.name}</h3>
+                  <p>{b.body}</p>
+                  <div className="founded">{b.founded}</div>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 

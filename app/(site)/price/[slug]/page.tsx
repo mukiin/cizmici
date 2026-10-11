@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PageBand } from "@/components/PageBand";
 import { getPublishedStory } from "@/lib/actions/content";
+import { formatDate } from "@/lib/dates";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -23,7 +24,7 @@ export default async function PriceDetailPage({ params }: Props) {
         kicker="Priča"
         title={story.title}
         lead={`${story.authorName}${
-          story.publishedAt ? ` · ${story.publishedAt.toLocaleDateString("bs-BA")}` : ""
+          story.publishedAt ? ` · ${formatDate(story.publishedAt)}` : ""
         }`}
       />
       <section className="tight">
